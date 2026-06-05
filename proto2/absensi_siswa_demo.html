@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AbsenGo • Demo Static</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="absensi_siswa_demo.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-icon"><i class="bi bi-journal-check"></i></div>
+        <div>
+          <div class="brand-title">AbsenGo</div>
+          <div class="brand-subtitle">Absensi Siswa • Demo</div>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="section-label">Menu Utama</div>
+        <button class="nav-item active" data-view="dashboard"><i class="bi bi-grid-1x2-fill"></i><span>Dashboard</span></button>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="section-label">Data Pengguna</div>
+        <button class="nav-item" data-view="guru"><i class="bi bi-person-workspace"></i><span>Guru</span></button>
+        <button class="nav-item" data-view="siswa"><i class="bi bi-person"></i><span>Siswa</span></button>
+        <button class="nav-item" data-view="ortu"><i class="bi bi-person-lines-fill"></i><span>Orang Tua</span></button>
+        <button class="nav-item" data-view="walikelas"><i class="bi bi-person-badge"></i><span>Wali Kelas</span></button>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="section-label">Manajemen Sekolah</div>
+        <button class="nav-item" data-view="local"><i class="bi bi-building"></i><span>Local</span></button>
+        <button class="nav-item" data-view="jurusan"><i class="bi bi-diagram-3"></i><span>Jurusan</span></button>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="section-label">Absensi</div>
+        <button class="nav-item" data-view="absen"><i class="bi bi-calendar-check"></i><span>Absen Siswa</span></button>
+        <button class="nav-item" data-view="pengajuan"><i class="bi bi-send-check"></i><span>Pengajuan Admin</span></button>
+        <button class="nav-item" data-view="rekap"><i class="bi bi-clipboard-data"></i><span>Rekap</span></button>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="section-label">Akses Demo</div>
+        <div class="role-box">
+          <div class="mb-2 small text-secondary">Login cepat role</div>
+          <button class="role-chip" data-demo-login="admin">Admin</button>
+          <button class="role-chip" data-demo-login="guru">Guru</button>
+          <button class="role-chip" data-demo-login="siswa">Siswa</button>
+          <button class="role-chip" data-demo-login="walikelas">Wali Kelas</button>
+          <button class="role-chip" data-demo-login="ortu">Orang Tua</button>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="small text-secondary">Tema mengikuti pola Bootstrap + style custom repo.</div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="sidebar-toggle" id="sidebarToggle"><i class="bi bi-list"></i></button>
+        <div class="topbar-title">
+          <span id="pageTitle">Dashboard Admin</span>
+          <small id="pageDesc">Ringkasan layanan absensi siswa.</small>
+        </div>
+        <div class="topbar-actions">
+          <div class="search-box">
+            <i class="bi bi-search"></i>
+            <input id="searchInput" type="search" placeholder="Cari data demo..." />
+          </div>
+          <button class="icon-btn" id="themeToggle" title="Tema"><i class="bi bi-moon-stars"></i></button>
+          <div class="user-pill">
+            <div class="avatar">A</div>
+            <div class="user-meta">
+              <strong id="userName">admin</strong>
+              <small id="userRole">admin</small>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section class="login-view view active" id="loginView">
+        <div class="login-grid">
+          <div class="login-card">
+            <div class="eyebrow"><i class="bi bi-shield-lock"></i> Demo login statis</div>
+            <h1>Sign In</h1>
+            <p>Demo ini meniru tampilan login repo dan berpindah role tanpa backend.</p>
+
+            <form id="loginForm" class="auth-form">
+              <div class="mb-3">
+                <label class="form-label">Username</label>
+                <input class="form-control form-control-lg" id="loginUsername" autocomplete="off" placeholder="admin / guru / siswa / walikelas / ortu" />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Password</label>
+                <div class="input-group input-group-lg">
+                  <input class="form-control" id="loginPassword" type="password" placeholder="Masukkan password" />
+                  <button class="btn btn-outline-secondary" type="button" id="togglePassword"><i class="bi bi-eye"></i></button>
+                </div>
+              </div>
+              <div class="login-hints">
+                <span><strong>admin</strong> / admin123</span>
+                <span><strong>guru</strong> / guru123</span>
+                <span><strong>siswa</strong> / siswa123</span>
+                <span><strong>walikelas</strong> / wali123</span>
+                <span><strong>ortu</strong> / ortu123</span>
+              </div>
+              <button class="btn btn-primary btn-lg w-100 mt-3" type="submit">Login</button>
+            </form>
+
+            <div class="text-center mt-3 text-secondary small">
+              Demo only • HTML, CSS, JS
+            </div>
+          </div>
+
+          <div class="login-visual">
+            <div class="visual-card">
+              <div class="visual-top">
+                <span class="badge-pill">AbsenGo</span>
+                <span class="badge-pill">Bootstrap 5</span>
+              </div>
+              <div class="visual-campus">
+                <div class="campus-sky"></div>
+                <div class="campus-building"></div>
+                <div class="campus-building building-two"></div>
+                <div class="campus-sign">ABSENSI SISWA</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="dashboardView">
+        <div class="hero-banner">
+          <div>
+            <div class="eyebrow"><i class="bi bi-speedometer2"></i> Dashboard Admin</div>
+            <h2>Panel monitoring absensi siswa</h2>
+            <p>Dashboard ini dibuat sebagai clone statis dari tema repo. Sidebar, topbar, tabel, dan kartu statistik disusun agar ringan di hosting statis.</p>
+          </div>
+          <div class="hero-actions">
+            <button class="btn btn-light" data-jump="rekap">Lihat Rekap</button>
+            <button class="btn btn-outline-primary" data-jump="absen">Data Absen</button>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label">Siswa hadir</div>
+            <div class="stat-value">128</div>
+            <div class="stat-foot"><i class="bi bi-arrow-up-right"></i> 12% dari kemarin</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Guru aktif</div>
+            <div class="stat-value">18</div>
+            <div class="stat-foot"><i class="bi bi-check2-circle"></i> realtime online</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Izin / sakit</div>
+            <div class="stat-value">7</div>
+            <div class="stat-foot"><i class="bi bi-journal-text"></i> butuh validasi</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Terlambat</div>
+            <div class="stat-value">4</div>
+            <div class="stat-foot"><i class="bi bi-exclamation-triangle"></i> perlu tindak lanjut</div>
+          </div>
+        </div>
+
+        <div class="row g-4 mt-1">
+          <div class="col-xl-8">
+            <div class="panel-card">
+              <div class="panel-head">
+                <div>
+                  <h3>Data Rekapitulasi</h3>
+                  <p>Grafik absensi masuk dan pulang mingguan</p>
+                </div>
+                <div class="dropdown-pill">Bulan ini <i class="bi bi-chevron-down"></i></div>
+              </div>
+              <div class="simple-chart" id="chartDashboard"></div>
+            </div>
+          </div>
+          <div class="col-xl-4">
+            <div class="panel-card h-100">
+              <div class="panel-head">
+                <div>
+                  <h3>Status Sistem</h3>
+                  <p>Ringkasan fitur aktif</p>
+                </div>
+              </div>
+              <div class="status-list">
+                <div class="status-item"><span>Login</span><strong>Aktif</strong></div>
+                <div class="status-item"><span>Register</span><strong>Aktif</strong></div>
+                <div class="status-item"><span>Absen Masuk</span><strong>Siap</strong></div>
+                <div class="status-item"><span>Absen Pulang</span><strong>Siap</strong></div>
+                <div class="status-item"><span>Rekap</span><strong>Siap</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-4 mt-1">
+          <div class="col-lg-6">
+            <div class="panel-card">
+              <div class="panel-head">
+                <div>
+                  <h3>Daftar Wali Kelas</h3>
+                  <p>Data demo dari modul `walikelas`</p>
+                </div>
+              </div>
+              <div class="table-responsive">
+                <table class="table align-middle demo-table">
+                  <thead>
+                    <tr><th>Nama</th><th>Kelas</th><th>Status</th></tr>
+                  </thead>
+                  <tbody id="walikelasTable"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="panel-card">
+              <div class="panel-head">
+                <div>
+                  <h3>Aktivitas Terakhir</h3>
+                  <p>Log sederhana untuk demo</p>
+                </div>
+              </div>
+              <div class="timeline" id="activityList"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="guruView">
+        <div class="page-card">
+          <div class="page-head">
+            <div>
+              <div class="eyebrow"><i class="bi bi-person-workspace"></i> Guru</div>
+              <h3>Manajemen data guru</h3>
+            </div>
+            <button class="btn btn-primary">Tambah Guru</button>
+          </div>
+          <div class="table-responsive mt-3">
+            <table class="table align-middle demo-table">
+              <thead><tr><th>No</th><th>Nama</th><th>Mapel</th><th>Kelas</th><th>Status</th></tr></thead>
+              <tbody id="guruTable"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="siswaView">
+        <div class="page-card">
+          <div class="page-head">
+            <div>
+              <div class="eyebrow"><i class="bi bi-person"></i> Siswa</div>
+              <h3>Manajemen data siswa</h3>
+            </div>
+            <button class="btn btn-primary">Tambah Siswa</button>
+          </div>
+          <div class="table-responsive mt-3">
+            <table class="table align-middle demo-table">
+              <thead><tr><th>No</th><th>Nama</th><th>NISN</th><th>Kelas</th><th>Status</th></tr></thead>
+              <tbody id="siswaTable"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="ortuView">
+        <div class="page-card">
+          <div class="page-head">
+            <div>
+              <div class="eyebrow"><i class="bi bi-person-lines-fill"></i> Orang Tua</div>
+              <h3>Daftar orang tua siswa</h3>
+            </div>
+          </div>
+          <div class="table-responsive mt-3">
+            <table class="table align-middle demo-table">
+              <thead><tr><th>Nama Wali</th><th>Nama Anak</th><th>Kontak</th><th>Status</th></tr></thead>
+              <tbody id="ortuTable"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="walikelasView">
+        <div class="page-card">
+          <div class="page-head">
+            <div>
+              <div class="eyebrow"><i class="bi bi-person-badge"></i> Wali Kelas</div>
+              <h3>Data wali kelas</h3>
+            </div>
+          </div>
+          <div class="table-responsive mt-3">
+            <table class="table align-middle demo-table">
+              <thead><tr><th>Nama</th><th>Kelas</th><th>Jumlah Siswa</th><th>Status</th></tr></thead>
+              <tbody id="walikelasFullTable"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="localView">
+        <div class="row g-4">
+          <div class="col-lg-7">
+            <div class="page-card">
+              <div class="page-head">
+                <div>
+                  <div class="eyebrow"><i class="bi bi-building"></i> Local</div>
+                  <h3>Daftar lokal / ruang kelas</h3>
+                </div>
+              </div>
+              <div class="table-responsive mt-3">
+                <table class="table align-middle demo-table">
+                  <thead><tr><th>Ruang</th><th>Gedung</th><th>Status</th></tr></thead>
+                  <tbody id="localTable"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="page-card h-100">
+              <h3>Filter cepat</h3>
+              <div class="stack-form">
+                <input class="form-control" placeholder="Cari ruang..." />
+                <input class="form-control" placeholder="Gedung..." />
+                <button class="btn btn-primary">Terapkan</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="jurusanView">
+        <div class="page-card">
+          <div class="page-head">
+            <div>
+              <div class="eyebrow"><i class="bi bi-diagram-3"></i> Jurusan</div>
+              <h3>Daftar jurusan</h3>
+            </div>
+          </div>
+          <div class="row g-4 mt-1" id="jurusanCards"></div>
+        </div>
+      </section>
+
+      <section class="view" id="absenView">
+        <div class="page-card">
+          <div class="page-head">
+            <div>
+              <div class="eyebrow"><i class="bi bi-calendar-check"></i> Absen Siswa</div>
+              <h3>Rekap absensi siswa</h3>
+            </div>
+          </div>
+          <div class="table-responsive mt-3">
+            <table class="table align-middle demo-table">
+              <thead><tr><th>No</th><th>Nama</th><th>Kelas</th><th>Masuk</th><th>Pulang</th><th>Status</th></tr></thead>
+              <tbody id="absenTable"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="pengajuanView">
+        <div class="row g-4">
+          <div class="col-lg-7">
+            <div class="page-card">
+              <div class="page-head">
+                <div>
+                  <div class="eyebrow"><i class="bi bi-send-check"></i> Pengajuan Admin</div>
+                  <h3>Daftar pengajuan</h3>
+                </div>
+              </div>
+              <div class="table-responsive mt-3">
+                <table class="table align-middle demo-table">
+                  <thead><tr><th>Nama</th><th>Jenis</th><th>Tanggal</th><th>Status</th></tr></thead>
+                  <tbody id="pengajuanTable"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="page-card h-100">
+              <h3>Form pengajuan</h3>
+              <input class="form-control mb-3" placeholder="Nama siswa/guru" />
+              <input class="form-control mb-3" placeholder="Jenis pengajuan" />
+              <textarea class="form-control mb-3" rows="6" placeholder="Keterangan"></textarea>
+              <button class="btn btn-primary w-100">Kirim Pengajuan</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="rekapView">
+        <div class="row g-4">
+          <div class="col-xl-8">
+            <div class="page-card">
+              <div class="page-head">
+                <div>
+                  <div class="eyebrow"><i class="bi bi-clipboard-data"></i> Rekap</div>
+                  <h3>Rekap absensi</h3>
+                </div>
+                <div class="dropdown-pill">Hari ini <i class="bi bi-chevron-down"></i></div>
+              </div>
+              <div class="simple-bars" id="rekapBars"></div>
+            </div>
+          </div>
+          <div class="col-xl-4">
+            <div class="page-card h-100">
+              <h3>Ringkasan</h3>
+              <div class="summary-list">
+                <div><span>Hadir</span><strong>128</strong></div>
+                <div><span>Izin</span><strong>7</strong></div>
+                <div><span>Sakit</span><strong>3</strong></div>
+                <div><span>Alpha</span><strong>4</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast-wrap position-fixed bottom-0 end-0 p-3">
+    <div class="toast align-items-center text-bg-primary border-0" id="demoToast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body" id="toastText">Login berhasil.</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="absensi_siswa_demo.js"></script>
+</body>
+</html>

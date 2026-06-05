@@ -1,0 +1,1259 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TechNoteAPP • Demo Statis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="technote_app.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"
+      defer
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+    <script
+      src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"
+      defer
+    ></script>
+    <script src="technote_app.js" defer></script>
+  </head>
+  <body data-theme="dark">
+    <div class="shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark"><i data-lucide="clipboard-list"></i></div>
+          <div>
+            <h1>TechNoteAPP</h1>
+            <p>PKL • STMIK Triguna Dharma</p>
+          </div>
+        </div>
+
+        <div class="section-label">Login Mode</div>
+        <div class="nav">
+          <button data-open-role="admin" class="active">
+            <i data-lucide="shield"></i>Admin default
+          </button>
+          <button data-open-role="dosen">
+            <i data-lucide="graduation-cap"></i>Dosen
+          </button>
+          <button data-open-role="mahasiswa">
+            <i data-lucide="user-round"></i>Mahasiswa
+          </button>
+        </div>
+
+        <div class="section-label">Admin Pages</div>
+        <div class="nav">
+          <button data-route="dashboard" class="active">
+            <i data-lucide="layout-dashboard"></i>Dashboard
+          </button>
+          <button data-route="users">
+            <i data-lucide="users"></i>Pengguna
+          </button>
+          <button data-route="software">
+            <i data-lucide="box"></i>Software
+          </button>
+          <button data-route="install">
+            <i data-lucide="download"></i>Penginstalan
+          </button>
+          <button data-route="repair">
+            <i data-lucide="wrench"></i>Perbaikan
+          </button>
+          <button data-route="recap">
+            <i data-lucide="bar-chart-3"></i>Rekap
+          </button>
+          <button data-route="rank"><i data-lucide="medal"></i>Rank</button>
+          <button data-route="log-login">
+            <i data-lucide="user-check"></i>Log Login
+          </button>
+          <button data-route="activity">
+            <i data-lucide="activity"></i>Log Aktivitas
+          </button>
+          <button data-route="system">
+            <i data-lucide="shield-check"></i>Maintenance
+          </button>
+          <button data-route="profile">
+            <i data-lucide="user-circle-2"></i>My Profile
+          </button>
+        </div>
+
+        <div class="section-label">Info</div>
+        <div class="sidebar-card">
+          <p>
+            Demo ini dibuat ringan untuk Vercel: satu induk HTML, satu CSS, satu
+            JS. Data yang ditampilkan bersifat simulasi dan berpindah sesuai
+            role login.
+          </p>
+          <div class="chip"><i data-lucide="sparkles"></i> Static preview</div>
+        </div>
+      </aside>
+
+      <main class="main">
+        <div class="topbar">
+          <div class="top-left">
+            <div class="search">
+              <i data-lucide="search"></i>
+              <input
+                id="searchInput"
+                type="text"
+                placeholder="Cari demo: admin, dosen, mahasiswa, pengguna, software..."
+              />
+            </div>
+          </div>
+          <div class="top-right">
+            <button class="icon-btn" id="themeBtn" title="Tema">
+              <i data-lucide="moon-star"></i>
+            </button>
+            <div class="profile-pill">
+              <div class="avatar">MH</div>
+              <div class="meta">
+                <strong id="userName">Mikaku23</strong>
+                <small id="roleName">admin</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="route-banner">
+          <div>
+            <strong id="routeTitle">Dashboard Admin</strong>
+            <small id="routeDesc"
+              >Layout utama admin meniru template_admin.layout, barside, navbar,
+              dan footer.</small
+            >
+          </div>
+          <div
+            style="
+              display: flex;
+              gap: 8px;
+              flex-wrap: wrap;
+              align-items: center;
+            "
+          >
+            <span id="roleBadge" class="pill">ADMIN</span>
+            <span class="pill">Responsive</span>
+            <span class="pill">Static demo</span>
+          </div>
+        </div>
+
+        <section class="page active" id="dashboard">
+          <div class="admin-layout">
+            <div class="admin-sidebar">
+              <div class="barside">
+                <div class="eyebrow">
+                  <i data-lucide="shield-check"></i> Admin panel
+                </div>
+                <h2 class="hero-title" style="font-size: 30px; margin-top: 6px">
+                  TechNoteAPP
+                </h2>
+                <p class="hero-text" style="margin-top: 10px">
+                  Panel admin untuk pencatatan instalasi software, perbaikan
+                  barang, rekap, dan audit aktivitas.
+                </p>
+                <div class="subnav" style="margin-top: 14px">
+                  <button class="active" data-tab="tab-dashboard">
+                    Dashboard
+                  </button>
+                  <button data-tab="tab-users">Users</button>
+                  <button data-tab="tab-services">Services</button>
+                  <button data-tab="tab-security">Security</button>
+                </div>
+              </div>
+            </div>
+            <div class="admin-main">
+              <div class="navbar">
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    gap: 12px;
+                    flex-wrap: wrap;
+                    align-items: center;
+                  "
+                >
+                  <div>
+                    <strong style="font-size: 18px">Dashboard Admin</strong>
+                    <div class="muted" style="font-size: 13px; margin-top: 4px">
+                      Struktur utama disusun dari folder `Admin` dan
+                      `template_admin`.
+                    </div>
+                  </div>
+                  <div class="hero-badges">
+                    <span class="pill">Admin default</span>
+                    <span class="pill">Login role switch</span>
+                    <span class="pill">Full responsive</span>
+                  </div>
+                </div>
+              </div>
+
+              <div id="tab-dashboard" class="tab-panel active">
+                <div class="hero-admin">
+                  <div class="card-hero">
+                    <div class="eyebrow">
+                      <i data-lucide="layout-dashboard"></i> Overview
+                    </div>
+                    <h2 class="hero-title">Selamat datang di TechNoteAPP</h2>
+                    <p class="hero-text">
+                      Dashboard ini merangkum status penginstalan, perbaikan,
+                      log login, log aktivitas, dan rekap layanan. Data
+                      ditampilkan sebagai demo statis, sehingga ringan untuk
+                      hosting Vercel.
+                    </p>
+                    <div class="actions">
+                      <button class="btn primary" data-jump="users">
+                        <i data-lucide="users"></i>Lihat pengguna
+                      </button>
+                      <button class="btn" data-jump="recap">
+                        <i data-lucide="bar-chart-3"></i>Buka rekap
+                      </button>
+                      <button class="btn success" data-jump="profile">
+                        <i data-lucide="user-circle-2"></i>Profil
+                      </button>
+                    </div>
+                  </div>
+                  <div class="panel">
+                    <div class="grid-2" style="margin-bottom: 16px">
+                      <div class="progress-card">
+                        <div class="circle-progress-wrapper">
+                          <svg width="118" height="118" viewBox="0 0 118 118">
+                            <defs>
+                              <linearGradient
+                                id="gradCircle"
+                                x1="0%"
+                                y1="0%"
+                                x2="100%"
+                                y2="0%"
+                              >
+                                <stop offset="0%" stop-color="#7c5cff" />
+                                <stop offset="100%" stop-color="#2dd4bf" />
+                              </linearGradient>
+                            </defs>
+                            <circle
+                              class="circle-progress-bg"
+                              cx="59"
+                              cy="59"
+                              r="48"
+                            ></circle>
+                            <circle
+                              class="circle-progress-value"
+                              data-progress="82"
+                              cx="59"
+                              cy="59"
+                              r="48"
+                            ></circle>
+                          </svg>
+                          <i class="circle-icon" data-lucide="users"></i>
+                        </div>
+                        <strong>82%</strong>
+                        <small>Pengguna aktif</small>
+                      </div>
+                      <div class="progress-card">
+                        <div class="circle-progress-wrapper">
+                          <svg width="118" height="118" viewBox="0 0 118 118">
+                            <defs>
+                              <linearGradient
+                                id="gradCircle2"
+                                x1="0%"
+                                y1="0%"
+                                x2="100%"
+                                y2="0%"
+                              >
+                                <stop offset="0%" stop-color="#2dd4bf" />
+                                <stop offset="100%" stop-color="#22c55e" />
+                              </linearGradient>
+                            </defs>
+                            <circle
+                              class="circle-progress-bg"
+                              cx="59"
+                              cy="59"
+                              r="48"
+                            ></circle>
+                            <circle
+                              class="circle-progress-value"
+                              data-progress="64"
+                              style="stroke: url(#gradCircle2)"
+                              cx="59"
+                              cy="59"
+                              r="48"
+                            ></circle>
+                          </svg>
+                          <i class="circle-icon" data-lucide="sparkles"></i>
+                        </div>
+                        <strong>64%</strong>
+                        <small>Software siap</small>
+                      </div>
+                    </div>
+                    <div class="mini-grid">
+                      <div class="mini-box">
+                        <strong>29</strong><span>Commit repo</span>
+                      </div>
+                      <div class="mini-box">
+                        <strong>4</strong><span>Role inti</span>
+                      </div>
+                      <div class="mini-box">
+                        <strong>6</strong><span>Entitas data</span>
+                      </div>
+                      <div class="mini-box">
+                        <strong>3</strong><span>User group</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="quick-grid" style="margin-top: 18px">
+                  <div class="quick-card">
+                    <span class="label">Pengguna aktif</span
+                    ><strong>128</strong>
+                    <div class="muted">status login terpantau</div>
+                  </div>
+                  <div class="quick-card">
+                    <span class="label">Instalasi</span><strong>42</strong>
+                    <div class="muted">antrian layanan software</div>
+                  </div>
+                  <div class="quick-card">
+                    <span class="label">Perbaikan</span><strong>19</strong>
+                    <div class="muted">barang di ruang teknisi</div>
+                  </div>
+                  <div class="quick-card">
+                    <span class="label">Rekap hari ini</span><strong>11</strong>
+                    <div class="muted">laporan masuk</div>
+                  </div>
+                </div>
+
+                <div class="grid-2" style="margin-top: 18px">
+                  <div class="section-card">
+                    <h3>Grafik dashboard</h3>
+                    <div class="chart-box">
+                      <canvas id="chartDashboard"></canvas>
+                    </div>
+                  </div>
+                  <div class="section-card">
+                    <h3>Panel status</h3>
+                    <div class="timeline">
+                      <div class="event">
+                        <div>
+                          <strong>Login dan registrasi</strong
+                          ><small>Mahasiswa, dosen, admin</small>
+                        </div>
+                        <span class="badge ok">Auth</span>
+                      </div>
+                      <div class="event">
+                        <div>
+                          <strong>Dashboard real-time</strong
+                          ><small>Statistik, chart, status online</small>
+                        </div>
+                        <span class="badge ok">Live</span>
+                      </div>
+                      <div class="event">
+                        <div>
+                          <strong>Activity log</strong
+                          ><small>Aksi, waktu, konteks</small>
+                        </div>
+                        <span class="badge warn">Audit</span>
+                      </div>
+                      <div class="event">
+                        <div>
+                          <strong>Export</strong
+                          ><small>PDF, Excel, print</small>
+                        </div>
+                        <span class="badge ok">Report</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="tab-users" class="tab-panel">
+                <div class="grid-2">
+                  <div class="section-card">
+                    <h3>Pengguna</h3>
+                    <div
+                      class="table-card glass-table"
+                      style="padding: 0; margin-top: 12px; overflow: auto"
+                    >
+                      <table style="min-width: 100%">
+                        <thead>
+                          <tr>
+                            <th>Nama</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Muhammad Haliq</td>
+                            <td>Admin</td>
+                            <td><span class="status done">Aktif</span></td>
+                          </tr>
+                          <tr>
+                            <td>Aulia Rahman</td>
+                            <td>Mahasiswa</td>
+                            <td>
+                              <span class="status progress">Pending</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Dr. Siti</td>
+                            <td>Dosen</td>
+                            <td><span class="status done">Online</span></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="section-card">
+                    <h3>Validasi akun</h3>
+                    <div class="timeline">
+                      <div class="event">
+                        <div>
+                          <strong>Mahasiswa</strong
+                          ><small>Validasi NIM 3 digit terakhir</small>
+                        </div>
+                        <span class="badge ok">NIM</span>
+                      </div>
+                      <div class="event">
+                        <div>
+                          <strong>Dosen</strong
+                          ><small>Validasi NIP terdaftar</small>
+                        </div>
+                        <span class="badge ok">NIP</span>
+                      </div>
+                      <div class="event">
+                        <div>
+                          <strong>QR Code</strong
+                          ><small>Dikirim via WhatsApp</small>
+                        </div>
+                        <span class="badge ok">QR</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="tab-services" class="tab-panel">
+                <div class="grid-2">
+                  <div class="section-card">
+                    <h3>Daftar layanan terbaru</h3>
+                    <div
+                      class="table-card glass-table"
+                      style="padding: 0; overflow: auto"
+                    >
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>No</th>
+                            <th>Nama</th>
+                            <th>Jenis</th>
+                            <th>Detail</th>
+                            <th>Status</th>
+                            <th>Estimasi</th>
+                          </tr>
+                        </thead>
+                        <tbody id="serviceBody"></tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="section-card">
+                    <h3>Statistik layanan</h3>
+                    <div class="timeline">
+                      <div class="event">
+                        <div>
+                          <strong>Software</strong
+                          ><small>Microsoft Office, VS Code, browser</small>
+                        </div>
+                        <span class="badge ok">Ready</span>
+                      </div>
+                      <div class="event">
+                        <div>
+                          <strong>Penginstalan</strong
+                          ><small>Mahasiswa datang ke ruang teknisi</small>
+                        </div>
+                        <span class="badge warn">Antri</span>
+                      </div>
+                      <div class="event">
+                        <div>
+                          <strong>Perbaikan</strong
+                          ><small>Laptop, PC, dan komponen</small>
+                        </div>
+                        <span class="badge danger">Masuk</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="tab-security" class="tab-panel">
+                <div class="grid-2">
+                  <div class="section-card">
+                    <h3>Log Login</h3>
+                    <div
+                      class="table-card glass-table"
+                      style="padding: 0; overflow: auto"
+                    >
+                      <table style="min-width: 100%">
+                        <thead>
+                          <tr>
+                            <th>Nama</th>
+                            <th>Aksi</th>
+                            <th>Jam</th>
+                            <th>Status</th>
+                          </tr>
+                        </thead>
+                        <tbody id="logBody"></tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="section-card">
+                    <h3>Log Aktivitas</h3>
+                    <div
+                      class="table-card glass-table"
+                      style="padding: 0; overflow: auto"
+                    >
+                      <table style="min-width: 100%">
+                        <thead>
+                          <tr>
+                            <th>Aksi</th>
+                            <th>User</th>
+                            <th>Konteks</th>
+                          </tr>
+                        </thead>
+                        <tbody id="activityBody"></tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer">
+            Admin layout mengikuti struktur `template_admin` dan seluruh halaman
+            Admin dipetakan ke demo statis.
+          </div>
+        </section>
+
+        <section class="page" id="users">
+          <div class="grid-2">
+            <div class="section-card">
+              <h3>User management</h3>
+              <p class="muted" style="margin-top: -6px">
+                Admin, mahasiswa, dosen
+              </p>
+              <div
+                class="table-card glass-table"
+                style="padding: 0; margin-top: 12px; overflow: auto"
+              >
+                <table style="min-width: 100%">
+                  <thead>
+                    <tr>
+                      <th>Nama</th>
+                      <th>Role</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Muhammad Haliq</td>
+                      <td>Admin</td>
+                      <td><span class="status done">Aktif</span></td>
+                    </tr>
+                    <tr>
+                      <td>Aulia Rahman</td>
+                      <td>Mahasiswa</td>
+                      <td><span class="status progress">Pending</span></td>
+                    </tr>
+                    <tr>
+                      <td>Dr. Siti</td>
+                      <td>Dosen</td>
+                      <td><span class="status done">Online</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="section-card">
+              <h3>Validasi akun</h3>
+              <div class="timeline">
+                <div class="event">
+                  <div>
+                    <strong>Mahasiswa</strong
+                    ><small>Validasi NIM 3 digit terakhir</small>
+                  </div>
+                  <span class="badge ok">NIM</span>
+                </div>
+                <div class="event">
+                  <div>
+                    <strong>Dosen</strong><small>Validasi NIP terdaftar</small>
+                  </div>
+                  <span class="badge ok">NIP</span>
+                </div>
+                <div class="event">
+                  <div>
+                    <strong>QR Code</strong><small>Dikirim via WhatsApp</small>
+                  </div>
+                  <span class="badge ok">QR</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="software">
+          <div class="grid-2">
+            <div class="section-card">
+              <h3>Software</h3>
+              <div class="timeline">
+                <div class="event">
+                  <div>
+                    <strong>Microsoft Office</strong
+                    ><small>Instalasi / update</small>
+                  </div>
+                  <span class="badge ok">Ready</span>
+                </div>
+                <div class="event">
+                  <div>
+                    <strong>Visual Studio Code</strong
+                    ><small>Developer tools</small>
+                  </div>
+                  <span class="badge ok">Ready</span>
+                </div>
+                <div class="event">
+                  <div>
+                    <strong>Browser & driver</strong
+                    ><small>Setup perangkat lab</small>
+                  </div>
+                  <span class="badge warn">Review</span>
+                </div>
+              </div>
+            </div>
+            <div class="section-card">
+              <h3>Filter data</h3>
+              <div class="contact-box">
+                <input type="text" placeholder="Nama software" />
+                <select>
+                  <option>Semua developer</option>
+                  <option>Microsoft</option>
+                  <option>Adobe</option>
+                  <option>Open source</option>
+                </select>
+                <button class="btn primary">Terapkan filter</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="install">
+          <div class="grid-2">
+            <div class="section-card">
+              <h3>Penginstalan</h3>
+              <div class="timeline">
+                <div class="event">
+                  <div>
+                    <strong>Nama</strong
+                    ><small>Mahasiswa datang ke ruang teknisi</small>
+                  </div>
+                  <span class="badge ok">Masuk</span>
+                </div>
+                <div class="event">
+                  <div>
+                    <strong>Proses</strong
+                    ><small>Teknisi mengerjakan instalasi</small>
+                  </div>
+                  <span class="badge warn">Berjalan</span>
+                </div>
+                <div class="event">
+                  <div>
+                    <strong>Hasil</strong
+                    ><small>Data tercatat + estimasi selesai</small>
+                  </div>
+                  <span class="badge ok">Tercatat</span>
+                </div>
+              </div>
+            </div>
+            <div class="section-card">
+              <h3>Countdown estimasi</h3>
+              <div style="font-size: 56px; font-weight: 900; line-height: 1">
+                00:24
+              </div>
+              <p class="muted">Menit tersisa sampai estimasi selesai.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="repair">
+          <div class="grid-2">
+            <div class="section-card">
+              <h3>Perbaikan</h3>
+              <div class="timeline">
+                <div class="event">
+                  <div>
+                    <strong>Jenis barang</strong
+                    ><small>Laptop / PC / komponen</small>
+                  </div>
+                  <span class="badge ok">Barang</span>
+                </div>
+                <div class="event">
+                  <div>
+                    <strong>Kerusakan</strong><small>Deskripsi masalah</small>
+                  </div>
+                  <span class="badge danger">Rusak</span>
+                </div>
+                <div class="event">
+                  <div>
+                    <strong>Tindakan</strong
+                    ><small>Perbaikan dan estimasi</small>
+                  </div>
+                  <span class="badge warn">Proses</span>
+                </div>
+              </div>
+            </div>
+            <div class="section-card">
+              <h3>Detail layanan</h3>
+              <div class="timeline">
+                <div class="event">
+                  <div>
+                    <strong>Status</strong
+                    ><small>Selesai / gagal / menunggu</small>
+                  </div>
+                  <span class="badge ok">Status</span>
+                </div>
+                <div class="event">
+                  <div>
+                    <strong>Tanggal</strong
+                    ><small>Record masuk pada hari ini</small>
+                  </div>
+                  <span class="badge ok">Tanggal</span>
+                </div>
+                <div class="event">
+                  <div>
+                    <strong>Estimasi</strong><small>Perkiraan selesai</small>
+                  </div>
+                  <span class="badge warn">Jam</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="recap">
+          <div class="grid-2">
+            <div class="section-card">
+              <h3>Rekap harian / bulanan / tahunan</h3>
+              <div class="chart-box"><canvas id="chartRecap"></canvas></div>
+            </div>
+            <div class="section-card">
+              <h3>Top mahasiswa</h3>
+              <div class="timeline">
+                <div class="event">
+                  <div>
+                    <strong>Top 1</strong
+                    ><small>Instalasi terbanyak semester ini</small>
+                  </div>
+                  <span class="badge ok">#1</span>
+                </div>
+                <div class="event">
+                  <div>
+                    <strong>Top 2</strong><small>Urutan aktivitas</small>
+                  </div>
+                  <span class="badge ok">#2</span>
+                </div>
+                <div class="event">
+                  <div>
+                    <strong>Top 3</strong><small>Urutan aktivitas</small>
+                  </div>
+                  <span class="badge ok">#3</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="rank">
+          <div class="grid-2">
+            <div class="section-card">
+              <h3>Score Rank</h3>
+              <div class="timeline">
+                <div class="event">
+                  <div>
+                    <strong>1. Nadia Zahra</strong><small>34 instalasi</small>
+                  </div>
+                  <span class="badge ok">Top</span>
+                </div>
+                <div class="event">
+                  <div>
+                    <strong>2. Rizky Ramadhan</strong
+                    ><small>28 instalasi</small>
+                  </div>
+                  <span class="badge ok">Top</span>
+                </div>
+                <div class="event">
+                  <div>
+                    <strong>3. Aulia Rahman</strong><small>24 instalasi</small>
+                  </div>
+                  <span class="badge ok">Top</span>
+                </div>
+              </div>
+            </div>
+            <div class="section-card">
+              <h3>Kontrol semester</h3>
+              <div class="contact-box">
+                <select>
+                  <option>Semester ini</option>
+                  <option>Semester lalu</option>
+                </select>
+                <button class="btn primary">Terapkan ranking</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="log-login">
+          <div class="grid-2">
+            <div class="section-card">
+              <h3>Log Login</h3>
+              <div
+                class="table-card glass-table"
+                style="padding: 0; overflow: auto"
+              >
+                <table style="min-width: 100%">
+                  <thead>
+                    <tr>
+                      <th>Nama</th>
+                      <th>Aksi</th>
+                      <th>Jam</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody id="logBody"></tbody>
+                </table>
+              </div>
+            </div>
+            <div class="section-card">
+              <h3>Status sistem</h3>
+              <div class="timeline">
+                <div class="event">
+                  <div>
+                    <strong>Maintenance</strong
+                    ><small>Blok login saat aktif</small>
+                  </div>
+                  <span class="badge warn">Mode</span>
+                </div>
+                <div class="event">
+                  <div>
+                    <strong>Notifikasi</strong
+                    ><small>WhatsApp selesai/gagal</small>
+                  </div>
+                  <span class="badge ok">Active</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="activity">
+          <div class="grid-2">
+            <div class="section-card">
+              <h3>Log aktivitas</h3>
+              <div
+                class="table-card glass-table"
+                style="padding: 0; overflow: auto"
+              >
+                <table style="min-width: 100%">
+                  <thead>
+                    <tr>
+                      <th>Aksi</th>
+                      <th>User</th>
+                      <th>Konteks</th>
+                    </tr>
+                  </thead>
+                  <tbody id="activityBody"></tbody>
+                </table>
+              </div>
+            </div>
+            <div class="section-card">
+              <h3>Audit trail</h3>
+              <p class="muted" style="line-height: 1.8">
+                Seluruh aksi user dicatat dengan waktu dan konteks, sesuai fitur
+                log aktivitas real-time pada proyek.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="system">
+          <div class="grid-2">
+            <div class="section-card">
+              <h3>Sistem / maintenance</h3>
+              <div class="timeline">
+                <div class="event">
+                  <div>
+                    <strong>Start maintenance</strong
+                    ><small>Route admin.maintenance.start</small>
+                  </div>
+                  <span class="badge warn">Start</span>
+                </div>
+                <div class="event">
+                  <div>
+                    <strong>Stop maintenance</strong
+                    ><small>Route admin.maintenance.stop</small>
+                  </div>
+                  <span class="badge ok">Stop</span>
+                </div>
+              </div>
+            </div>
+            <div class="section-card">
+              <h3>Profile ringkas</h3>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 14px;
+                  margin-bottom: 18px;
+                "
+              >
+                <div
+                  class="avatar"
+                  style="width: 72px; height: 72px; font-size: 22px"
+                >
+                  MH
+                </div>
+                <div>
+                  <strong style="font-size: 20px">Muhammad Haliq Maulana</strong
+                  ><br />
+                  <span class="muted">Role: Admin</span>
+                </div>
+              </div>
+              <div id="adminNotice" class="auth-note">
+                Login admin aktif. Panel admin memuat seluruh halaman dari
+                folder Admin dan template_admin.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="profile">
+          <div class="grid-2">
+            <div class="section-card">
+              <h3>My profile</h3>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 16px;
+                  margin-bottom: 18px;
+                "
+              >
+                <div
+                  class="avatar"
+                  style="width: 72px; height: 72px; font-size: 24px"
+                >
+                  MH
+                </div>
+                <div>
+                  <strong style="font-size: 20px">Muhammad Haliq Maulana</strong
+                  ><br />
+                  <span class="muted">Role: Admin</span>
+                </div>
+              </div>
+              <div class="timeline">
+                <div class="event">
+                  <div>
+                    <strong>Nama</strong><small>Data identitas utama</small>
+                  </div>
+                  <span class="badge ok">Read</span>
+                </div>
+                <div class="event">
+                  <div>
+                    <strong>Username</strong><small>Login credential</small>
+                  </div>
+                  <span class="badge ok">Read</span>
+                </div>
+                <div class="event">
+                  <div>
+                    <strong>Role</strong
+                    ><small>Admin / mahasiswa / dosen</small>
+                  </div>
+                  <span class="badge ok">Read</span>
+                </div>
+                <div class="event">
+                  <div>
+                    <strong>NIM / NIP</strong
+                    ><small>Identitas sesuai role</small>
+                  </div>
+                  <span class="badge ok">Read</span>
+                </div>
+              </div>
+            </div>
+            <div class="section-card">
+              <h3>Referensi view</h3>
+              <p class="muted" style="line-height: 1.8">
+                File `my-profile.blade.php` menampilkan nama, username, role,
+                dan NIM/NIP. Halaman login memuat username dan password, dengan
+                tautan forgot password dan sign up.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="dosen">
+          <div class="login-content">
+            <div class="left">
+              <div class="auth-card">
+                <div class="logo-main" style="margin-bottom: 6px">
+                  <div class="logo-mark">
+                    <i data-lucide="graduation-cap"></i>
+                  </div>
+                  <div>
+                    <strong style="display: block; font-size: 15px"
+                      >TechNoteAPP • Dosen</strong
+                    ><span class="muted" style="font-size: 12px"
+                      >Dashboard dosen</span
+                    >
+                  </div>
+                </div>
+                <h2 class="typing-container">
+                  <span id="typingDosen"></span><span class="cursor">|</span>
+                </h2>
+                <p style="margin-top: 10px">
+                  Mode ini aktif setelah login <code>dosen / dosen123</code>.
+                  Layout mengikuti `template_dosen` dan folder `dosen`.
+                </p>
+                <div class="hero-badges">
+                  <span class="pill">Layout dosen</span>
+                  <span class="pill">Contact</span>
+                  <span class="pill">About</span>
+                </div>
+              </div>
+            </div>
+            <div class="right">
+              <div class="hero-image">
+                <div class="mock-ui">
+                  <div class="mock-top">
+                    <span class="pill">Dosen view</span
+                    ><span class="pill">dash-mhs.css</span>
+                  </div>
+                  <div class="mock-body">
+                    <div class="mock-side">
+                      <div class="mock-line"></div>
+                      <div class="mock-line mid"></div>
+                      <div class="mock-line short"></div>
+                      <div class="mock-line"></div>
+                    </div>
+                    <div class="mock-main">
+                      <div class="mock-card"></div>
+                      <div class="mock-card"></div>
+                      <div class="mock-card"></div>
+                      <div class="mock-card"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="section-card" style="margin-top: 14px">
+                <h3>Riwayat perbaikan</h3>
+                <div
+                  class="table-card glass-table"
+                  style="padding: 0; overflow: auto"
+                >
+                  <table style="min-width: 100%">
+                    <thead>
+                      <tr>
+                        <th>No</th>
+                        <th>Tanggal</th>
+                        <th>Nama</th>
+                        <th>Barang</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody id="dosenBody"></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="mahasiswa">
+          <div class="login-content">
+            <div class="left">
+              <div class="auth-card">
+                <div class="logo-main" style="margin-bottom: 6px">
+                  <div class="logo-mark"><i data-lucide="user-round"></i></div>
+                  <div>
+                    <strong style="display: block; font-size: 15px"
+                      >TechNoteAPP • Mahasiswa</strong
+                    ><span class="muted" style="font-size: 12px"
+                      >Dashboard mahasiswa</span
+                    >
+                  </div>
+                </div>
+                <h2 class="typing-container">
+                  <span id="typingMahasiswa"></span
+                  ><span class="cursor">|</span>
+                </h2>
+                <p style="margin-top: 10px">
+                  Mode ini aktif setelah login
+                  <code>mahasiswa / mahasiswa123</code>. Layout mengikuti
+                  `template_mahasiswa` dan folder `mahasiswa`.
+                </p>
+                <div class="hero-badges">
+                  <span class="pill">Layout mahasiswa</span>
+                  <span class="pill">Contact</span>
+                  <span class="pill">Rank</span>
+                </div>
+              </div>
+            </div>
+            <div class="right">
+              <div class="hero-image">
+                <div class="mock-ui">
+                  <div class="mock-top">
+                    <span class="pill">Mahasiswa view</span
+                    ><span class="pill">dash-mhs.css</span>
+                  </div>
+                  <div class="mock-body">
+                    <div class="mock-side">
+                      <div class="mock-line"></div>
+                      <div class="mock-line mid"></div>
+                      <div class="mock-line short"></div>
+                      <div class="mock-line"></div>
+                    </div>
+                    <div class="mock-main">
+                      <div class="mock-card"></div>
+                      <div class="mock-card"></div>
+                      <div class="mock-card"></div>
+                      <div class="mock-card"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="section-card" style="margin-top: 14px">
+                <h3>Riwayat penginstalan</h3>
+                <div
+                  class="table-card glass-table"
+                  style="padding: 0; overflow: auto"
+                >
+                  <table style="min-width: 100%">
+                    <thead>
+                      <tr>
+                        <th>No</th>
+                        <th>Tanggal</th>
+                        <th>Nama</th>
+                        <th>Software</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody id="mhsBody"></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="login">
+          <div class="login-content">
+            <div class="left">
+              <form id="loginForm" class="auth-card">
+                <div class="logo-main" style="margin-bottom: 6px">
+                  <div class="logo-mark"><i data-lucide="log-in"></i></div>
+                  <div>
+                    <strong style="display: block; font-size: 15px"
+                      >TechNoteAPP</strong
+                    >
+                    <span class="muted" style="font-size: 12px"
+                      >Masuk sesuai role</span
+                    >
+                  </div>
+                </div>
+                <h2>Sign In</h2>
+                <p>
+                  Gunakan kredensial demo berikut: admin / admin123, dosen /
+                  dosen123, mahasiswa / mahasiswa123.
+                </p>
+                <div class="field">
+                  <label>Username</label
+                  ><input
+                    id="usernameField"
+                    class="auth-input"
+                    type="text"
+                    placeholder="Masukkan username"
+                  />
+                </div>
+                <div class="field">
+                  <label>Password</label
+                  ><input
+                    id="passwordField"
+                    class="auth-input"
+                    type="password"
+                    placeholder="Masukkan password"
+                  />
+                </div>
+                <div class="helper-row">
+                  <button type="button" class="btn" id="togglePassword">
+                    <i data-lucide="eye"></i>Tampilkan password
+                  </button>
+                  <a href="#">Forgot Password?</a>
+                </div>
+                <button
+                  type="submit"
+                  class="btn primary"
+                  style="width: 100%; justify-content: center"
+                >
+                  Sign In
+                </button>
+                <p
+                  style="
+                    text-align: center;
+                    margin-top: 16px;
+                    color: var(--muted);
+                  "
+                >
+                  Not registered?
+                  <a href="#" style="color: #9fc3ff">Sign up.</a>
+                </p>
+              </form>
+            </div>
+            <div class="right">
+              <div class="hero-image">
+                <div class="mock-ui">
+                  <div class="mock-top">
+                    <span class="pill">Role switch</span
+                    ><span class="pill">Fast on Vercel</span>
+                  </div>
+                  <div class="mock-body">
+                    <div class="mock-side">
+                      <div class="mock-line"></div>
+                      <div class="mock-line mid"></div>
+                      <div class="mock-line short"></div>
+                      <div class="mock-line"></div>
+                    </div>
+                    <div class="mock-main">
+                      <div class="mock-card"></div>
+                      <div class="mock-card"></div>
+                      <div class="mock-card"></div>
+                      <div class="mock-card"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="auth-note" style="margin-top: 14px">
+                Login berhasil akan berpindah otomatis ke dashboard admin,
+                dosen, atau mahasiswa tanpa reload berat.
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

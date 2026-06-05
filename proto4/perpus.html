@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0f172a" />
+  <title>Perpus — Clone Static</title>
+  <link rel="stylesheet" href="perpus.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Navigasi utama">
+      <div class="brand">
+        <div class="brand-mark">P</div>
+        <div>
+          <div class="brand-title">Perpus</div>
+          <div class="brand-subtitle">Static clone</div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <button class="nav-item active" data-section="dashboard">Dashboard</button>
+        <button class="nav-item" data-section="buku">Data Buku</button>
+        <button class="nav-item" data-section="siswa">Data Siswa</button>
+        <button class="nav-item" data-section="pegawai">Data Pegawai</button>
+        <button class="nav-item" data-section="peminjaman">Peminjaman</button>
+        <button class="nav-item" data-section="pengembalian">Pengembalian</button>
+        <button class="nav-item" data-section="login">Login</button>
+      </nav>
+
+      <div class="sidebar-card">
+        <div class="sidebar-card-title">Tema ringan</div>
+        <p>
+          Satu file CSS, satu file JS, tanpa PHP, tanpa database, tanpa framework berat.
+        </p>
+      </div>
+    </aside>
+
+    <div class="overlay" id="overlay" hidden></div>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="icon-btn mobile-only" id="menuToggle" aria-label="Buka menu">☰</button>
+        <div>
+          <h1 id="pageTitle">Dashboard Perpustakaan</h1>
+          <p id="pageSubtitle">Ringkas, responsif, dan siap dipakai sebagai mockup statik.</p>
+        </div>
+        <div class="topbar-actions">
+          <div class="search-wrap">
+            <span>⌕</span>
+            <input id="globalSearch" type="search" placeholder="Cari data..." />
+          </div>
+          <div class="status-pill">Offline static</div>
+        </div>
+      </header>
+
+      <section class="hero section active" data-section="dashboard">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <span class="badge">Perpustakaan</span>
+            <h2>Clone statik yang ringan untuk desktop dan mobile</h2>
+            <p>
+              Struktur halaman meniru aplikasi perpustakaan biasa: dashboard, data buku,
+              data siswa, data pegawai, peminjaman, pengembalian, dan login.
+            </p>
+            <div class="hero-actions">
+              <button class="primary-btn" data-jump="buku">Lihat data buku</button>
+              <button class="ghost-btn" data-jump="login">Masuk ke login</button>
+            </div>
+          </div>
+
+          <div class="hero-stats">
+            <article class="stat-card">
+              <div class="stat-value">128</div>
+              <div class="stat-label">Buku aktif</div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-value">54</div>
+              <div class="stat-label">Siswa terdaftar</div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-value">12</div>
+              <div class="stat-label">Peminjaman hari ini</div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-value">98%</div>
+              <div class="stat-label">Ketersediaan sistem</div>
+            </article>
+          </div>
+        </div>
+
+        <div class="panel-grid">
+          <article class="panel">
+            <div class="panel-head">
+              <h3>Aktivitas terbaru</h3>
+              <span class="muted">Realtime palsu</span>
+            </div>
+            <div class="timeline">
+              <div class="timeline-item">
+                <span class="dot"></span>
+                <div>
+                  <strong>Pengembalian buku</strong>
+                  <p>Buku “Basis Data” dikembalikan tepat waktu.</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <span class="dot"></span>
+                <div>
+                  <strong>Peminjaman baru</strong>
+                  <p>3 siswa meminjam buku referensi untuk tugas sekolah.</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <span class="dot"></span>
+                <div>
+                  <strong>Data siswa diperbarui</strong>
+                  <p>Beberapa akun siswa disinkronkan ke daftar terbaru.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-head">
+              <h3>Ringkasan modul</h3>
+              <span class="muted">Versi statik</span>
+            </div>
+            <div class="module-grid">
+              <button class="module-card" data-jump="buku">
+                <span>📚</span>
+                <strong>Buku</strong>
+                <small>Katalog, stok, kategori</small>
+              </button>
+              <button class="module-card" data-jump="siswa">
+                <span>🎓</span>
+                <strong>Siswa</strong>
+                <small>Data anggota terdaftar</small>
+              </button>
+              <button class="module-card" data-jump="pegawai">
+                <span>🧑‍💼</span>
+                <strong>Pegawai</strong>
+                <small>Petugas dan admin</small>
+              </button>
+              <button class="module-card" data-jump="peminjaman">
+                <span>↗</span>
+                <strong>Peminjaman</strong>
+                <small>Form transaksi keluar</small>
+              </button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" data-section="buku">
+        <div class="section-head">
+          <div>
+            <h2>Data Buku</h2>
+            <p>Daftar katalog contoh yang bisa difilter dan dicari.</p>
+          </div>
+          <button class="primary-btn" data-jump="dashboard">Kembali</button>
+        </div>
+
+        <div class="toolbar">
+          <input class="table-search" data-target="bukuTable" type="search" placeholder="Cari judul / penulis / kategori" />
+          <div class="chip-group">
+            <button class="chip active" data-filter="all" data-target="bukuTable">Semua</button>
+            <button class="chip" data-filter="fiksi" data-target="bukuTable">Fiksi</button>
+            <button class="chip" data-filter="teknologi" data-target="bukuTable">Teknologi</button>
+            <button class="chip" data-filter="referensi" data-target="bukuTable">Referensi</button>
+          </div>
+        </div>
+
+        <div class="table-card">
+          <table id="bukuTable">
+            <thead>
+              <tr>
+                <th>Kode</th><th>Judul</th><th>Penulis</th><th>Kategori</th><th>Stok</th><th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-category="teknologi"><td>B-001</td><td>Dasar Pemrograman</td><td>Andi Saputra</td><td>Teknologi</td><td>12</td><td><span class="tag success">Tersedia</span></td></tr>
+              <tr data-category="referensi"><td>B-002</td><td>Ensiklopedia Sains</td><td>Dewi Lestari</td><td>Referensi</td><td>5</td><td><span class="tag success">Tersedia</span></td></tr>
+              <tr data-category="fiksi"><td>B-003</td><td>Senja di Perpus</td><td>Raka Pratama</td><td>Fiksi</td><td>8</td><td><span class="tag success">Tersedia</span></td></tr>
+              <tr data-category="teknologi"><td>B-004</td><td>Jaringan Komputer</td><td>Nur Aini</td><td>Teknologi</td><td>2</td><td><span class="tag warning">Hampir Habis</span></td></tr>
+              <tr data-category="referensi"><td>B-005</td><td>Kamus Istilah IT</td><td>Team Editorial</td><td>Referensi</td><td>9</td><td><span class="tag success">Tersedia</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section" data-section="siswa">
+        <div class="section-head">
+          <div>
+            <h2>Data Siswa</h2>
+            <p>Daftar anggota perpustakaan yang disusun untuk tampilan statik.</p>
+          </div>
+          <button class="primary-btn" data-jump="dashboard">Kembali</button>
+        </div>
+
+        <div class="cards-grid">
+          <article class="mini-card"><strong>54</strong><span>Total siswa</span></article>
+          <article class="mini-card"><strong>8</strong><span>Baru bulan ini</span></article>
+          <article class="mini-card"><strong>3</strong><span>Aktif meminjam</span></article>
+        </div>
+
+        <div class="table-card">
+          <table id="siswaTable">
+            <thead>
+              <tr>
+                <th>NIS</th><th>Nama</th><th>Kelas</th><th>Jurusan</th><th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-category="x"><td>10101</td><td>Alya</td><td>X IPA 1</td><td>IPA</td><td><span class="tag success">Aktif</span></td></tr>
+              <tr data-category="xi"><td>10222</td><td>Bima</td><td>XI RPL 2</td><td>RPL</td><td><span class="tag success">Aktif</span></td></tr>
+              <tr data-category="xii"><td>10335</td><td>Citra</td><td>XII AKL 1</td><td>Akuntansi</td><td><span class="tag muted">Tidak Pinjam</span></td></tr>
+              <tr data-category="xi"><td>10448</td><td>Dimas</td><td>XI TKJ 1</td><td>TKJ</td><td><span class="tag success">Aktif</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section" data-section="pegawai">
+        <div class="section-head">
+          <div>
+            <h2>Data Pegawai</h2>
+            <p>Petugas perpustakaan, kepala unit, dan admin.</p>
+          </div>
+          <button class="primary-btn" data-jump="dashboard">Kembali</button>
+        </div>
+
+        <div class="table-card">
+          <table id="pegawaiTable">
+            <thead>
+              <tr>
+                <th>ID</th><th>Nama</th><th>Jabatan</th><th>Shift</th><th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-category="admin"><td>P-01</td><td>Rina</td><td>Admin</td><td>Pagi</td><td><span class="tag success">Online</span></td></tr>
+              <tr data-category="petugas"><td>P-02</td><td>Fadil</td><td>Petugas</td><td>Siang</td><td><span class="tag success">Online</span></td></tr>
+              <tr data-category="kepala"><td>P-03</td><td>Sari</td><td>Kepala Perpus</td><td>Flexible</td><td><span class="tag warning">Standby</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section" data-section="peminjaman">
+        <div class="section-head">
+          <div>
+            <h2>Peminjaman</h2>
+            <p>Form ringkas untuk transaksi keluar.</p>
+          </div>
+          <button class="primary-btn" data-jump="dashboard">Kembali</button>
+        </div>
+
+        <div class="form-layout">
+          <form class="form-card" id="borrowForm">
+            <div class="form-row">
+              <label>Nama siswa<input name="nama" required placeholder="Contoh: Bima" /></label>
+              <label>NIS<input name="nis" required placeholder="Contoh: 10222" /></label>
+            </div>
+            <div class="form-row">
+              <label>Judul buku<input name="buku" required placeholder="Contoh: Dasar Pemrograman" /></label>
+              <label>Tanggal pinjam<input name="tgl" type="date" required /></label>
+            </div>
+            <label>Keterangan<textarea name="keterangan" rows="4" placeholder="Catatan singkat..."></textarea></label>
+            <button class="primary-btn" type="submit">Simpan simulasi</button>
+          </form>
+
+          <div class="info-card">
+            <h3>Aturan singkat</h3>
+            <ul class="info-list">
+              <li>Validasi sederhana di sisi klien.</li>
+              <li>Tidak ada query database.</li>
+              <li>Ringan untuk server statik.</li>
+            </ul>
+            <div class="notice">Hasil submit hanya tampil sebagai notifikasi visual.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" data-section="pengembalian">
+        <div class="section-head">
+          <div>
+            <h2>Pengembalian</h2>
+            <p>Form statik untuk simulasi pengembalian buku.</p>
+          </div>
+          <button class="primary-btn" data-jump="dashboard">Kembali</button>
+        </div>
+
+        <div class="form-layout">
+          <div class="info-card">
+            <h3>Transaksi terakhir</h3>
+            <p>Data berikut hanya contoh tampilan halaman pengembalian.</p>
+            <div class="transaction-box">
+              <div><span>No. transaksi</span><strong>TRX-2026-014</strong></div>
+              <div><span>Judul buku</span><strong>Jaringan Komputer</strong></div>
+              <div><span>Jatuh tempo</span><strong>12 Juni 2026</strong></div>
+            </div>
+          </div>
+
+          <form class="form-card" id="returnForm">
+            <div class="form-row">
+              <label>No. transaksi<input name="trx" required placeholder="TRX-2026-014" /></label>
+              <label>Tanggal kembali<input name="tgl" type="date" required /></label>
+            </div>
+            <label>Catatan<textarea name="catatan" rows="4" placeholder="Kondisi buku, denda, dll."></textarea></label>
+            <button class="primary-btn" type="submit">Proses simulasi</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="section" data-section="login">
+        <div class="section-head">
+          <div>
+            <h2>Login</h2>
+            <p>Halaman masuk statik yang ringan untuk desktop dan mobile.</p>
+          </div>
+          <button class="primary-btn" data-jump="dashboard">Kembali</button>
+        </div>
+
+        <div class="login-layout">
+          <div class="login-panel">
+            <h3>Masuk ke sistem</h3>
+            <p>Gunakan demo akun apa saja untuk simulasi antarmuka.</p>
+            <form id="loginForm" class="login-form">
+              <label>Username<input name="user" required placeholder="admin" /></label>
+              <label>Password<input name="pass" type="password" required placeholder="••••••••" /></label>
+              <button class="primary-btn" type="submit">Masuk</button>
+            </form>
+            <div class="notice">Tidak ada autentikasi server, jadi aman untuk clone statik.</div>
+          </div>
+          <div class="login-side">
+            <div class="side-stat">
+              <strong>3 file</strong>
+              <span>perpus.html, perpus.css, perpus.js</span>
+            </div>
+            <div class="side-stat">
+              <strong>Responsif</strong>
+              <span>sidebar jadi drawer pada layar kecil.</span>
+            </div>
+            <div class="side-stat">
+              <strong>Ringan</strong>
+              <span>tanpa plugin berat dan tanpa dependency.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+    </main>
+  </div>
+
+  <script src="perpus.js"></script>
+</body>
+</html>

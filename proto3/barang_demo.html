@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Barang • Demo Static</title>
+  <link rel="stylesheet" href="barang_demo.css" />
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark">B</div>
+        <div>
+          <div class="brand-title">Barang</div>
+          <div class="brand-subtitle">Inventaris • Demo</div>
+        </div>
+      </div>
+
+      <div class="nav-block">
+        <div class="nav-label">Akses Cepat</div>
+        <button class="nav-item active" data-view="dashboard">Dashboard</button>
+        <button class="nav-item" data-view="barang">Barang</button>
+        <button class="nav-item" data-view="peminjaman">Peminjaman</button>
+        <button class="nav-item" data-view="pengelola">Pengelola</button>
+        <button class="nav-item" data-view="pengembalian">Pengembalian</button>
+        <button class="nav-item" data-view="user">User</button>
+      </div>
+
+      <div class="nav-block">
+        <div class="nav-label">Autentikasi</div>
+        <button class="nav-item" data-view="login">Login</button>
+        <button class="nav-item" data-view="register">Register</button>
+      </div>
+
+      <div class="nav-block">
+        <div class="nav-label">Role Demo</div>
+        <button class="role-chip" data-role="admin">admin / admin123</button>
+        <button class="role-chip" data-role="pengelola">pengelola / pengelola123</button>
+        <button class="role-chip" data-role="user">user / user123</button>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-card-title">Tema repo</div>
+        <p>
+          Demo ini mengikuti pola visual repo: login bergaya glass, dashboard ala AdminLTE,
+          sidebar kiri, info-box, dan tabel data untuk barang, peminjaman, pengelola,
+          pengembalian, dan user.
+        </p>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="icon-btn sidebar-toggle" id="sidebarToggle">☰</button>
+        <div class="topbar-title">
+          <strong id="pageTitle">Dashboard</strong>
+          <span id="pageSub">Ringkasan inventaris barang</span>
+        </div>
+        <div class="topbar-actions">
+          <div class="searchbox">
+            <span>⌕</span>
+            <input id="searchInput" type="search" placeholder="Cari data demo..." />
+          </div>
+          <button class="icon-btn" id="themeToggle" title="Tema">◐</button>
+          <div class="user-pill">
+            <div class="avatar" id="avatar">A</div>
+            <div>
+              <strong id="userName">admin</strong>
+              <small id="userRole">admin</small>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section class="view active" id="loginView">
+        <div class="login-grid">
+          <div class="login-card">
+            <div class="eyebrow">Login Demo</div>
+            <h1>Sign In</h1>
+            <p>
+              Tampilan ini meniru halaman login repo: background penuh, kartu glass,
+              input berbingkai, dan toggle password.
+            </p>
+
+            <form id="loginForm" class="auth-form">
+              <label>Username</label>
+              <input id="loginUser" type="text" placeholder="admin / pengelola / user" />
+
+              <label>Password</label>
+              <div class="password-wrap">
+                <input id="loginPass" type="password" placeholder="Masukkan password" />
+                <button type="button" class="pw-toggle" id="togglePass">👁</button>
+              </div>
+
+              <div class="hint-row">
+                <span>admin/admin123</span>
+                <span>pengelola/pengelola123</span>
+                <span>user/user123</span>
+              </div>
+
+              <button class="primary-btn" type="submit">Login</button>
+              <div class="mini-links">
+                <button type="button" class="link-btn" data-jump="register">Buat akun</button>
+                <button type="button" class="link-btn" data-jump="dashboard">Masuk sebagai demo</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="login-visual">
+            <div class="login-visual-card">
+              <div class="login-visual-top">
+                <div class="pill">Inventaris Barang</div>
+                <div class="pill">Responsive</div>
+              </div>
+              <div class="window">
+                <div class="sky"></div>
+                <div class="tower tower-a"></div>
+                <div class="tower tower-b"></div>
+                <div class="tower tower-c"></div>
+                <div class="building"></div>
+                <div class="sign">BARANG SYSTEM</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="registerView">
+        <div class="page-card">
+          <div class="page-head">
+            <div>
+              <div class="eyebrow">Register</div>
+              <h2>Buat akun demo</h2>
+            </div>
+            <button class="ghost-btn" data-jump="login">Kembali</button>
+          </div>
+
+          <div class="register-grid">
+            <div class="form-card">
+              <label>Nama</label>
+              <input type="text" placeholder="Nama lengkap" />
+              <label>Username</label>
+              <input type="text" placeholder="Username" />
+              <label>Password</label>
+              <input type="password" placeholder="Password" />
+              <label>Role</label>
+              <select>
+                <option>user</option>
+                <option>pengelola</option>
+                <option>admin</option>
+              </select>
+              <button class="primary-btn">Regis</button>
+            </div>
+            <div class="panel-note">
+              <h3>Struktur register</h3>
+              <p>
+                Dibuat ringan tanpa backend. Fungsinya hanya simulasi agar portofolio dapat
+                memperlihatkan alur register, login, dan perpindahan halaman.
+              </p>
+              <div class="note-list">
+                <div>• input glass</div>
+                <div>• tombol responsif</div>
+                <div>• layout mobile-friendly</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="dashboardView">
+        <div class="hero">
+          <div>
+            <div class="eyebrow">Dashboard Admin</div>
+            <h2>Panel inventaris barang</h2>
+            <p>
+              Mencerminkan halaman dashboard dengan info-box dan ringkasan data.
+              Seluruh UI dibuat statis agar ringan dibuka pada perangkat desktop maupun mobile.
+            </p>
+          </div>
+          <div class="hero-actions">
+            <button class="ghost-btn" data-jump="barang">Lihat Barang</button>
+            <button class="ghost-btn" data-jump="peminjaman">Peminjaman</button>
+          </div>
+        </div>
+
+        <div class="info-grid">
+          <div class="info-box teal">
+            <div class="info-icon">👥</div>
+            <div>
+              <span>User</span>
+              <strong>24</strong>
+            </div>
+          </div>
+          <div class="info-box warning">
+            <div class="info-icon">🧑‍💼</div>
+            <div>
+              <span>Pengelola</span>
+              <strong>8</strong>
+            </div>
+          </div>
+          <div class="info-box gray">
+            <div class="info-icon">📦</div>
+            <div>
+              <span>Barang</span>
+              <strong>142</strong>
+            </div>
+          </div>
+          <div class="info-box blue">
+            <div class="info-icon">📤</div>
+            <div>
+              <span>Peminjaman</span>
+              <strong>37</strong>
+            </div>
+          </div>
+          <div class="info-box navy">
+            <div class="info-icon">↩</div>
+            <div>
+              <span>Pengembalian</span>
+              <strong>31</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="panel-card">
+            <div class="panel-head">
+              <div>
+                <h3>Grafik Ringkas</h3>
+                <p>Simulasi data pemakaian per kategori</p>
+              </div>
+              <span class="chip">Bulan ini</span>
+            </div>
+            <div class="chart" id="chartBox"></div>
+          </div>
+
+          <div class="panel-card">
+            <div class="panel-head">
+              <div>
+                <h3>Aktivitas Terbaru</h3>
+                <p>Log demo tanpa database</p>
+              </div>
+            </div>
+            <div class="timeline" id="activityList"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="barangView">
+        <div class="page-card">
+          <div class="page-head">
+            <div>
+              <div class="eyebrow">Barang</div>
+              <h2>Daftar barang</h2>
+            </div>
+            <button class="primary-btn small">Tambah Barang</button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>No</th><th>Kode</th><th>Nama</th><th>Stok</th><th>Status</th></tr>
+              </thead>
+              <tbody id="barangTable"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="peminjamanView">
+        <div class="page-card">
+          <div class="page-head">
+            <div>
+              <div class="eyebrow">Peminjaman</div>
+              <h2>Data peminjaman</h2>
+            </div>
+            <button class="primary-btn small">Tambah Peminjaman</button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>No</th><th>Peminjam</th><th>Barang</th><th>Tanggal</th><th>Status</th></tr>
+              </thead>
+              <tbody id="peminjamanTable"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="pengelolaView">
+        <div class="page-card">
+          <div class="page-head">
+            <div>
+              <div class="eyebrow">Pengelola</div>
+              <h2>Data pengelola</h2>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Nama</th><th>Username</th><th>Jabatan</th><th>Status</th></tr>
+              </thead>
+              <tbody id="pengelolaTable"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="pengembalianView">
+        <div class="page-card">
+          <div class="page-head">
+            <div>
+              <div class="eyebrow">Pengembalian</div>
+              <h2>Data pengembalian</h2>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>No</th><th>Peminjam</th><th>Barang</th><th>Tanggal</th><th>Status</th></tr>
+              </thead>
+              <tbody id="pengembalianTable"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="userView">
+        <div class="page-card">
+          <div class="page-head">
+            <div>
+              <div class="eyebrow">User</div>
+              <h2>Data user</h2>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>No</th><th>Nama</th><th>Username</th><th>Role</th><th>Status</th></tr>
+              </thead>
+              <tbody id="userTable"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast">Login berhasil.</div>
+  <script src="barang_demo.js"></script>
+</body>
+</html>
