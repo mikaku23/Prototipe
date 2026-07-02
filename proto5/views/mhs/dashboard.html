@@ -18,9 +18,23 @@
       <div class="tn-brand-mark"><i data-lucide="orbit"></i></div>
       <div><strong>TechNote App 2.0 Demo</strong><span>Mahasiswa Panel</span></div>
     </a>
-    <nav class="tn-nav"><a data-nav href="dashboard.html">Dashboard</a><a data-nav href="penginstalan.html">Penginstalan</a><a data-nav href="antrian.html">Antrian</a><a data-nav href="contact.html">Contact</a><a data-nav href="profil.html">Profil</a><a data-nav href="../../login.html">Logout</a></nav>
+    <nav class="tn-nav"><a data-nav href="dashboard.html">Dashboard</a><a data-nav href="../../login.html">Logout</a></nav>
     <button class="tn-btn tn-mobile" type="button" data-mobile-menu><i data-lucide="menu"></i> Menu</button>
   </header>
+  <div class="tn-mobile-backdrop" data-mobile-backdrop></div>
+  <aside class="tn-mobile-panel" data-mobile-panel>
+    <div class="tn-mobile-panel-head">
+      <div class="tn-side-head">
+        <div class="tn-avatar"><i data-lucide="menu"></i></div>
+        <div>
+          <h3 style="margin:0">TechNote App 2.0 Demo</h3>
+          <p style="margin-top:4px">Menu navigasi mobile</p>
+        </div>
+      </div>
+      <button class="tn-btn small" type="button" data-mobile-close>Close</button>
+    </div>
+    <nav class="tn-sidemenu"><a data-nav href="dashboard.html">Dashboard</a>
+  </aside>
 
   <div class="tn-shell">
     <aside class="tn-sidebar">
@@ -66,14 +80,14 @@
     </section>
     <section class="tn-card tn-section">
       <div class="tn-section-head"><div><h2>Riwayat layanan</h2><p>Contoh tabel untuk tampilan mahasiswa.</p></div></div>
-      <table class="tn-table">
+      <div class="tn-table-wrap"><table class="tn-table">
         <thead><tr><th>Tanggal</th><th>Software</th><th>Status</th><th>Catatan</th></tr></thead>
         <tbody>
           <tr><td>02 Jul</td><td>Office</td><td>Selesai</td><td>Siap digunakan</td></tr>
           <tr><td>01 Jul</td><td>VS Code</td><td>Proses</td><td>Menunggu giliran</td></tr>
           <tr><td>30 Jun</td><td>Driver</td><td>Selesai</td><td>Normal</td></tr>
         </tbody>
-      </table>
+      </table></div>
     </section>
     
     </main>

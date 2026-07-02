@@ -21,6 +21,20 @@
     <nav class="tn-nav"><a data-nav href="dashboard.html">Dashboard</a><a data-nav href="user.html">User</a><a data-nav href="software.html">Software</a><a data-nav href="penginstalan.html">Penginstalan</a><a data-nav href="perbaikan.html">Perbaikan</a><a data-nav href="rekap.html">Rekap</a><a data-nav href="ai.html">AI</a><a data-nav href="log-aktivitas.html">Log</a><a data-nav href="../../login.html">Logout</a></nav>
     <button class="tn-btn tn-mobile" type="button" data-mobile-menu><i data-lucide="menu"></i> Menu</button>
   </header>
+  <div class="tn-mobile-backdrop" data-mobile-backdrop></div>
+  <aside class="tn-mobile-panel" data-mobile-panel>
+    <div class="tn-mobile-panel-head">
+      <div class="tn-side-head">
+        <div class="tn-avatar"><i data-lucide="menu"></i></div>
+        <div>
+          <h3 style="margin:0">TechNote App 2.0 Demo</h3>
+          <p style="margin-top:4px">Menu navigasi mobile</p>
+        </div>
+      </div>
+      <button class="tn-btn small" type="button" data-mobile-close>Close</button>
+    </div>
+    <nav class="tn-sidemenu"><a data-nav href="dashboard.html">Dashboard</a><a data-nav href="user.html">User</a><a data-nav href="software.html">Software</a><a data-nav href="penginstalan.html">Penginstalan</a><a data-nav href="perbaikan.html">Perbaikan</a><a data-nav href="rekap.html">Rekap</a><a data-nav href="ai.html">AI</a><a data-nav href="log-aktivitas.html">Log</a></nav>
+  </aside>
 
   <div class="tn-shell">
     <aside class="tn-sidebar">
@@ -71,14 +85,14 @@
     </section>
     <section class="tn-card tn-section">
       <div class="tn-section-head"><div><h3>Daftar statis</h3><p>Tampilan tabel ini hanya ilustrasi struktur halaman.</p></div></div>
-      <table class="tn-table">
+      <div class="tn-table-wrap"><table class="tn-table">
         <thead><tr><th>Nama</th><th>Kategori</th><th>Status</th><th>Aksi</th></tr></thead>
         <tbody>
           <tr><td>Item A</td><td>AI Panel</td><td>Aktif</td><td><span class="tn-badge"><span class="tn-dot"></span>Detail</span></td></tr>
           <tr><td>Item B</td><td>AI Panel</td><td>Menunggu</td><td><span class="tn-badge"><span class="tn-dot warn"></span>Detail</span></td></tr>
           <tr><td>Item C</td><td>AI Panel</td><td>Selesai</td><td><span class="tn-badge"><span class="tn-dot"></span>Detail</span></td></tr>
         </tbody>
-      </table>
+      </table></div>
     </section>
     
     </main>

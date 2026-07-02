@@ -21,6 +21,20 @@
     <nav class="tn-nav"><a data-nav href="dashboard.html">Dashboard</a><a data-nav href="user.html">User</a><a data-nav href="software.html">Software</a><a data-nav href="penginstalan.html">Penginstalan</a><a data-nav href="perbaikan.html">Perbaikan</a><a data-nav href="rekap.html">Rekap</a><a data-nav href="ai.html">AI</a><a data-nav href="log-aktivitas.html">Log</a><a data-nav href="../../login.html">Logout</a></nav>
     <button class="tn-btn tn-mobile" type="button" data-mobile-menu><i data-lucide="menu"></i> Menu</button>
   </header>
+  <div class="tn-mobile-backdrop" data-mobile-backdrop></div>
+  <aside class="tn-mobile-panel" data-mobile-panel>
+    <div class="tn-mobile-panel-head">
+      <div class="tn-side-head">
+        <div class="tn-avatar"><i data-lucide="menu"></i></div>
+        <div>
+          <h3 style="margin:0">TechNote App 2.0 Demo</h3>
+          <p style="margin-top:4px">Menu navigasi mobile</p>
+        </div>
+      </div>
+      <button class="tn-btn small" type="button" data-mobile-close>Close</button>
+    </div>
+    <nav class="tn-sidemenu"><a data-nav href="dashboard.html">Dashboard</a><a data-nav href="user.html">User</a><a data-nav href="software.html">Software</a><a data-nav href="penginstalan.html">Penginstalan</a><a data-nav href="perbaikan.html">Perbaikan</a><a data-nav href="rekap.html">Rekap</a><a data-nav href="ai.html">AI</a><a data-nav href="log-aktivitas.html">Log</a></nav>
+  </aside>
 
   <div class="tn-shell">
     <aside class="tn-sidebar">
@@ -71,14 +85,14 @@
         <div><h2>Aktivitas terbaru</h2><p>Contoh layout dashboard dengan tampilan glass, blur, dan transisi ringan.</p></div>
         <a class="tn-btn small" href="log-aktivitas.html">Buka log</a>
       </div>
-      <table class="tn-table">
+      <div class="tn-table-wrap"><table class="tn-table">
         <thead><tr><th>Waktu</th><th>Aksi</th><th>Status</th><th>Keterangan</th></tr></thead>
         <tbody>
           <tr><td>08:20</td><td>Login admin</td><td><span class="tn-badge"><span class="tn-dot"></span>Sukses</span></td><td>Masuk dashboard demo</td></tr>
           <tr><td>09:10</td><td>Tambah software</td><td><span class="tn-badge"><span class="tn-dot warn"></span>Simulasi</span></td><td>Hanya tampilan</td></tr>
           <tr><td>10:00</td><td>Rekap harian</td><td><span class="tn-badge"><span class="tn-dot"></span>Aktif</span></td><td>Ringkasan data statis</td></tr>
         </tbody>
-      </table>
+      </table></div>
     </section>
     
     </main>
