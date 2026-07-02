@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mahasiswa Dashboard | TechNoteApp 2.0 Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="tn-page">
+<div class="tn-noise"></div>
+<div class="tn-wrap">
+  <header class="tn-topbar">
+    <a class="tn-brand" href="../../login.html">
+      <div class="tn-brand-mark"><i data-lucide="orbit"></i></div>
+      <div><strong>TechNote App 2.0 Demo</strong><span>Mahasiswa Panel</span></div>
+    </a>
+    <nav class="tn-nav"><a data-nav href="dashboard.html">Dashboard</a><a data-nav href="penginstalan.html">Penginstalan</a><a data-nav href="antrian.html">Antrian</a><a data-nav href="contact.html">Contact</a><a data-nav href="profil.html">Profil</a><a data-nav href="../../login.html">Logout</a></nav>
+    <button class="tn-btn tn-mobile" type="button" data-mobile-menu><i data-lucide="menu"></i> Menu</button>
+  </header>
+
+  <div class="tn-shell">
+    <aside class="tn-sidebar">
+      <section class="tn-card">
+        <div class="inner">
+          <div class="tn-side-head">
+            <div class="tn-avatar"><i data-lucide="layout-dashboard"></i></div>
+            <div>
+              <h3 style="margin:0">Mahasiswa Panel</h3>
+              <p style="margin-top:4px">Demo role panel</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="tn-card">
+        <div class="inner">
+          <span class="tn-badge"><span class="tn-dot"></span> UI aktif</span>
+          <p style="margin-top:12px">Tampilan ini hanya simulasi navigasi. Semua aksi CRUD diganti data statis.</p>
+        </div>
+        <div class="sidemenu-wrap">
+          <div class="tn-sidemenu">
+            <a data-nav href="dashboard.html">Dashboard</a>
+          </div>
+        </div>
+      </section>
+    </aside>
+
+    <main class="tn-content">
+      
+    <section class="tn-card tn-hero">
+      <span class="tn-kicker"><i data-lucide="book-open"></i> Mahasiswa panel demo</span>
+      <h1>Booking penginstalan dan antrean.</h1>
+      <p>Halaman demo untuk mahasiswa berisi status penginstalan, daftar antrean, dan riwayat sederhana. Semua navigasi memakai href biasa.</p>
+      <div class="tn-actions">
+        <a class="tn-btn primary" href="penginstalan.html">Buka Penginstalan</a>
+        <a class="tn-btn" href="antrian.html">Lihat Antrean</a>
+      </div>
+    </section>
+    <section class="tn-grid cols-3">
+      <div class="tn-stat"><div class="label">Booking hari ini</div><div class="value">07</div><div class="note">Slot demo yang tersedia.</div></div>
+      <div class="tn-stat"><div class="label">Dalam proses</div><div class="value">03</div><div class="note">Status layanan aktif.</div></div>
+      <div class="tn-stat"><div class="label">Selesai</div><div class="value">24</div><div class="note">Riwayat penginstalan.</div></div>
+    </section>
+    <section class="tn-card tn-section">
+      <div class="tn-section-head"><div><h2>Riwayat layanan</h2><p>Contoh tabel untuk tampilan mahasiswa.</p></div></div>
+      <table class="tn-table">
+        <thead><tr><th>Tanggal</th><th>Software</th><th>Status</th><th>Catatan</th></tr></thead>
+        <tbody>
+          <tr><td>02 Jul</td><td>Office</td><td>Selesai</td><td>Siap digunakan</td></tr>
+          <tr><td>01 Jul</td><td>VS Code</td><td>Proses</td><td>Menunggu giliran</td></tr>
+          <tr><td>30 Jun</td><td>Driver</td><td>Selesai</td><td>Normal</td></tr>
+        </tbody>
+      </table>
+    </section>
+    
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/script.js"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>

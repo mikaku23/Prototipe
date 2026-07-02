@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dosen Dashboard | TechNoteApp 2.0 Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="tn-page">
+<div class="tn-noise"></div>
+<div class="tn-wrap">
+  <header class="tn-topbar">
+    <a class="tn-brand" href="../../login.html">
+      <div class="tn-brand-mark"><i data-lucide="orbit"></i></div>
+      <div><strong>TechNote App 2.0 Demo</strong><span>Dosen Panel</span></div>
+    </a>
+    <nav class="tn-nav"><a data-nav href="dashboard.html">Dashboard</a><a data-nav href="perbaikan.html">Perbaikan</a><a data-nav href="tiket.html">Tiket</a><a data-nav href="contact.html">Contact</a><a data-nav href="profil.html">Profil</a><a data-nav href="../../login.html">Logout</a></nav>
+    <button class="tn-btn tn-mobile" type="button" data-mobile-menu><i data-lucide="menu"></i> Menu</button>
+  </header>
+
+  <div class="tn-shell">
+    <aside class="tn-sidebar">
+      <section class="tn-card">
+        <div class="inner">
+          <div class="tn-side-head">
+            <div class="tn-avatar"><i data-lucide="layout-dashboard"></i></div>
+            <div>
+              <h3 style="margin:0">Dosen Panel</h3>
+              <p style="margin-top:4px">Demo role panel</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="tn-card">
+        <div class="inner">
+          <span class="tn-badge"><span class="tn-dot"></span> UI aktif</span>
+          <p style="margin-top:12px">Tampilan ini hanya simulasi navigasi. Semua aksi CRUD diganti data statis.</p>
+        </div>
+        <div class="sidemenu-wrap">
+          <div class="tn-sidemenu">
+            <a data-nav href="dashboard.html">Dashboard</a>
+          </div>
+        </div>
+      </section>
+    </aside>
+
+    <main class="tn-content">
+      
+    <section class="tn-card tn-hero">
+      <span class="tn-kicker"><i data-lucide="graduation-cap"></i> Dosen panel demo</span>
+      <h1>Panel perbaikan dan tiket.</h1>
+      <p>Demo untuk dosen dengan fokus pada status perbaikan, riwayat tiket, dan informasi layanan. Navigasi memakai href biasa.</p>
+      <div class="tn-actions">
+        <a class="tn-btn primary" href="perbaikan.html">Lihat Perbaikan</a>
+        <a class="tn-btn" href="tiket.html">Buka Tiket</a>
+      </div>
+    </section>
+    <section class="tn-grid cols-3">
+      <div class="tn-stat"><div class="label">Tiket aktif</div><div class="value">11</div><div class="note">Dalam antrian demo.</div></div>
+      <div class="tn-stat"><div class="label">Selesai</div><div class="value">19</div><div class="note">Riwayat layanan statis.</div></div>
+      <div class="tn-stat"><div class="label">Estimasi</div><div class="value">2 jam</div><div class="note">Contoh tampilan estimasi.</div></div>
+    </section>
+    <section class="tn-card tn-section">
+      <div class="tn-section-head"><div><h2>Status perbaikan</h2><p>Ringkasan kartu perbaikan dengan warna status yang konsisten.</p></div></div>
+      <div class="tn-grid cols-3">
+        <div class="tn-stat"><div class="label">Laptop lab</div><div class="value">Proses</div><div class="note">Ganti SSD dan instalasi ulang.</div></div>
+        <div class="tn-stat"><div class="label">Proyektor</div><div class="value">Tertunda</div><div class="note">Menunggu spare part.</div></div>
+        <div class="tn-stat"><div class="label">PC dosen</div><div class="value">Selesai</div><div class="note">Sudah diuji ulang.</div></div>
+      </div>
+    </section>
+    
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/script.js"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>

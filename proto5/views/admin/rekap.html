@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rekap | TechNoteApp 2.0 Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="tn-page">
+<div class="tn-noise"></div>
+<div class="tn-wrap">
+  <header class="tn-topbar">
+    <a class="tn-brand" href="../../login.html">
+      <div class="tn-brand-mark"><i data-lucide="orbit"></i></div>
+      <div><strong>TechNote App 2.0 Demo</strong><span>Admin Panel</span></div>
+    </a>
+    <nav class="tn-nav"><a data-nav href="dashboard.html">Dashboard</a><a data-nav href="user.html">User</a><a data-nav href="software.html">Software</a><a data-nav href="penginstalan.html">Penginstalan</a><a data-nav href="perbaikan.html">Perbaikan</a><a data-nav href="rekap.html">Rekap</a><a data-nav href="ai.html">AI</a><a data-nav href="log-aktivitas.html">Log</a><a data-nav href="../../login.html">Logout</a></nav>
+    <button class="tn-btn tn-mobile" type="button" data-mobile-menu><i data-lucide="menu"></i> Menu</button>
+  </header>
+
+  <div class="tn-shell">
+    <aside class="tn-sidebar">
+      <section class="tn-card">
+        <div class="inner">
+          <div class="tn-side-head">
+            <div class="tn-avatar"><i data-lucide="layout-dashboard"></i></div>
+            <div>
+              <h3 style="margin:0">Admin Panel</h3>
+              <p style="margin-top:4px">Demo role panel</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="tn-card">
+        <div class="inner">
+          <span class="tn-badge"><span class="tn-dot"></span> UI aktif</span>
+          <p style="margin-top:12px">Tampilan ini hanya simulasi navigasi. Semua aksi CRUD diganti data statis.</p>
+        </div>
+        <div class="sidemenu-wrap">
+          <div class="tn-sidemenu">
+            <a data-nav href="dashboard.html">Dashboard</a><a data-nav href="user.html">User</a><a data-nav href="software.html">Software</a><a data-nav href="penginstalan.html">Penginstalan</a><a data-nav href="perbaikan.html">Perbaikan</a><a data-nav href="rekap.html">Rekap</a><a data-nav href="ai.html">AI</a><a data-nav href="log-aktivitas.html">Log</a>
+          </div>
+        </div>
+      </section>
+    </aside>
+
+    <main class="tn-content">
+      
+    <section class="tn-card tn-hero" style="min-height:220px">
+      <span class="tn-kicker"><i data-lucide="layers-3"></i> Admin demo</span>
+      <h1>Rekap</h1>
+      <p>Rekap harian, mingguan, bulanan, dan tahunan. Seluruh tombol pada demo ini memakai href biasa untuk perpindahan halaman.</p>
+      <div class="tn-actions">
+        <a class="tn-btn primary" href="dashboard.html">Kembali ke Dashboard</a>
+        <a class="tn-btn" href="user.html">Buka User</a>
+      </div>
+    </section>
+    <section class="tn-card tn-section">
+      <div class="tn-section-head">
+        <div><h2>Contoh panel rekap</h2><p>Rekap harian, mingguan, bulanan, dan tahunan.</p></div>
+      </div>
+      <div class="tn-grid cols-3">
+        <div class="tn-stat"><div class="label">Item 01</div><div class="value">12</div><div class="note">Card ringkasan demo.</div></div>
+        <div class="tn-stat"><div class="label">Item 02</div><div class="value">08</div><div class="note">Card ringkasan demo.</div></div>
+        <div class="tn-stat"><div class="label">Item 03</div><div class="value">24</div><div class="note">Card ringkasan demo.</div></div>
+      </div>
+    </section>
+    <section class="tn-card tn-section">
+      <div class="tn-section-head"><div><h3>Daftar statis</h3><p>Tampilan tabel ini hanya ilustrasi struktur halaman.</p></div></div>
+      <table class="tn-table">
+        <thead><tr><th>Nama</th><th>Kategori</th><th>Status</th><th>Aksi</th></tr></thead>
+        <tbody>
+          <tr><td>Item A</td><td>Rekap</td><td>Aktif</td><td><span class="tn-badge"><span class="tn-dot"></span>Detail</span></td></tr>
+          <tr><td>Item B</td><td>Rekap</td><td>Menunggu</td><td><span class="tn-badge"><span class="tn-dot warn"></span>Detail</span></td></tr>
+          <tr><td>Item C</td><td>Rekap</td><td>Selesai</td><td><span class="tn-badge"><span class="tn-dot"></span>Detail</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+    
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/script.js"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>

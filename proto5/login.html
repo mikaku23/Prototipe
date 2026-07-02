@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login | TechNoteApp 2.0 Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="tn-page">
+<div class="tn-noise"></div>
+<div class="tn-wrap">
+  <div class="tn-login">
+    <section class="tn-card tn-login-hero">
+      <div>
+        <span class="tn-kicker"><i data-lucide="sparkles"></i> Demo static untuk Vercel</span>
+        <h1 class="tn-hero-title" style="margin:16px 0 12px;font-size:clamp(2.2rem,5vw,4.7rem);line-height:1.02;letter-spacing:-.04em;">TechNote App 2.0</h1>
+        <p style="margin:0;max-width:68ch;color:var(--muted);line-height:1.8;">
+          Ini versi tampilan demo saja. Tidak ada CRUD, tidak ada backend, dan tidak ada autentikasi server.
+          Navigasi memakai href biasa, sehingga halaman tetap bisa berpindah secara langsung.
+        </p>
+        <div class="tn-actions">
+          <a class="tn-btn primary" href="views/admin/dashboard.html"><i data-lucide="shield"></i> Masuk sebagai Admin</a>
+          <a class="tn-btn" href="views/dsn/dashboard.html"><i data-lucide="graduation-cap"></i> Masuk sebagai Dosen</a>
+          <a class="tn-btn" href="views/mhs/dashboard.html"><i data-lucide="book-open"></i> Masuk sebagai Mahasiswa</a>
+        </div>
+      </div>
+
+      <div class="tn-feature">
+        <div class="item"><strong>Admin</strong><p>Dashboard operasional, pengguna, software, tiket, rekap, AI, dan log.</p></div>
+        <div class="item"><strong>Dosen</strong><p>Panel perbaikan, detail tiket, status progres, dan riwayat layanan.</p></div>
+        <div class="item"><strong>Mahasiswa</strong><p>Booking penginstalan, antrean, histori, dan informasi estimasi.</p></div>
+      </div>
+    </section>
+
+    <section class="tn-card tn-login-form">
+      <div class="inner">
+        <span class="tn-kicker"><i data-lucide="log-in"></i> Pilih role demo</span>
+        <h2 style="margin:14px 0 8px;font-size:1.8rem">Akses cepat ke halaman</h2>
+        <p style="margin:0;color:var(--muted);line-height:1.75">
+          Username dan password hanya ditampilkan sebagai referensi demo.
+          Tombol di bawah ini langsung menuju halaman role masing-masing.
+        </p>
+      </div>
+
+      <div class="tn-login-grid">
+        <div class="tn-role">
+          <strong>Admin</strong>
+          <span>username: admin<br>password: 123</span>
+          <a class="tn-btn small primary" href="views/admin/dashboard.html">Buka Admin</a>
+        </div>
+        <div class="tn-role">
+          <strong>Dosen</strong>
+          <span>username: dosen<br>password: 123</span>
+          <a class="tn-btn small" href="views/dsn/dashboard.html">Buka Dosen</a>
+        </div>
+        <div class="tn-role">
+          <strong>Mahasiswa</strong>
+          <span>username: mahasiswa<br>password: 123</span>
+          <a class="tn-btn small" href="views/mhs/dashboard.html">Buka Mahasiswa</a>
+        </div>
+      </div>
+
+      <div class="tn-section" style="padding:0">
+        <div class="tn-section-head">
+          <div>
+            <h3 style="margin:0">Catatan demo</h3>
+            <p>Halaman ini dipasang dengan path relatif, jadi CSS tetap terbaca saat dibuka dari file lokal maupun Vercel.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="tn-footer">Demo visual TechNote App 2.0 — static HTML, CSS, dan JS.</div>
+</div>
+<script src="assets/js/script.js"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>

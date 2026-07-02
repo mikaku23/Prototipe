@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard | TechNoteApp 2.0 Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="tn-page">
+<div class="tn-noise"></div>
+<div class="tn-wrap">
+  <header class="tn-topbar">
+    <a class="tn-brand" href="../../login.html">
+      <div class="tn-brand-mark"><i data-lucide="orbit"></i></div>
+      <div><strong>TechNote App 2.0 Demo</strong><span>Admin Panel</span></div>
+    </a>
+    <nav class="tn-nav"><a data-nav href="dashboard.html">Dashboard</a><a data-nav href="user.html">User</a><a data-nav href="software.html">Software</a><a data-nav href="penginstalan.html">Penginstalan</a><a data-nav href="perbaikan.html">Perbaikan</a><a data-nav href="rekap.html">Rekap</a><a data-nav href="ai.html">AI</a><a data-nav href="log-aktivitas.html">Log</a><a data-nav href="../../login.html">Logout</a></nav>
+    <button class="tn-btn tn-mobile" type="button" data-mobile-menu><i data-lucide="menu"></i> Menu</button>
+  </header>
+
+  <div class="tn-shell">
+    <aside class="tn-sidebar">
+      <section class="tn-card">
+        <div class="inner">
+          <div class="tn-side-head">
+            <div class="tn-avatar"><i data-lucide="layout-dashboard"></i></div>
+            <div>
+              <h3 style="margin:0">Admin Panel</h3>
+              <p style="margin-top:4px">Demo role panel</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="tn-card">
+        <div class="inner">
+          <span class="tn-badge"><span class="tn-dot"></span> UI aktif</span>
+          <p style="margin-top:12px">Tampilan ini hanya simulasi navigasi. Semua aksi CRUD diganti data statis.</p>
+        </div>
+        <div class="sidemenu-wrap">
+          <div class="tn-sidemenu">
+            <a data-nav href="dashboard.html">Dashboard</a><a data-nav href="user.html">User</a><a data-nav href="software.html">Software</a><a data-nav href="penginstalan.html">Penginstalan</a><a data-nav href="perbaikan.html">Perbaikan</a><a data-nav href="rekap.html">Rekap</a><a data-nav href="ai.html">AI</a><a data-nav href="log-aktivitas.html">Log</a>
+          </div>
+        </div>
+      </section>
+    </aside>
+
+    <main class="tn-content">
+      
+    <section class="tn-card tn-hero">
+      <span class="tn-kicker"><i data-lucide="shield"></i> Admin panel demo</span>
+      <h1>Dashboard operasional TechNote.</h1>
+      <p>Ringkasan visual untuk demo: pengguna, software, penginstalan, perbaikan, rekap, dan aktivitas. Semua elemen dibuat statis dan berpindah dengan href biasa.</p>
+      <div class="tn-actions">
+        <a class="tn-btn primary" href="user.html">Lihat User</a>
+        <a class="tn-btn" href="rekap.html">Buka Rekap</a>
+        <a class="tn-btn ghost" href="ai.html">Panel AI</a>
+      </div>
+    </section>
+    <section class="tn-grid cols-4">
+      <div class="tn-stat"><div class="label">User aktif</div><div class="value">148</div><div class="note">Demo statistik operasional.</div></div>
+      <div class="tn-stat"><div class="label">Penginstalan</div><div class="value">36</div><div class="note">Data visual layanan mahasiswa.</div></div>
+      <div class="tn-stat"><div class="label">Perbaikan</div><div class="value">22</div><div class="note">Barang dosen yang ditangani.</div></div>
+      <div class="tn-stat"><div class="label">Rekap hari ini</div><div class="value">58</div><div class="note">Gabungan aktivitas demo.</div></div>
+    </section>
+    <section class="tn-card tn-section">
+      <div class="tn-section-head">
+        <div><h2>Aktivitas terbaru</h2><p>Contoh layout dashboard dengan tampilan glass, blur, dan transisi ringan.</p></div>
+        <a class="tn-btn small" href="log-aktivitas.html">Buka log</a>
+      </div>
+      <table class="tn-table">
+        <thead><tr><th>Waktu</th><th>Aksi</th><th>Status</th><th>Keterangan</th></tr></thead>
+        <tbody>
+          <tr><td>08:20</td><td>Login admin</td><td><span class="tn-badge"><span class="tn-dot"></span>Sukses</span></td><td>Masuk dashboard demo</td></tr>
+          <tr><td>09:10</td><td>Tambah software</td><td><span class="tn-badge"><span class="tn-dot warn"></span>Simulasi</span></td><td>Hanya tampilan</td></tr>
+          <tr><td>10:00</td><td>Rekap harian</td><td><span class="tn-badge"><span class="tn-dot"></span>Aktif</span></td><td>Ringkasan data statis</td></tr>
+        </tbody>
+      </table>
+    </section>
+    
+    </main>
+  </div>
+</div>
+<script src="../../assets/js/script.js"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>
