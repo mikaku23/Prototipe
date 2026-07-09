@@ -753,3 +753,21 @@ button{
     padding:22px;
   }
 }
+/* Tambahkan di style.css */
+.project-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  z-index: 10;
+}
+
+.project-buttons .btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
