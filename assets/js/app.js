@@ -28,6 +28,11 @@ const statsTargets = {
   portfolioYear: document.querySelector('[data-stat="portfolioYear"]'),
 };
 
+const statsSection = document.getElementById("stats");
+let statsAnimated = false;
+let statsObserver = null;
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
 const projectData = Array.isArray(window.PROJECT_DATA) ? [...window.PROJECT_DATA] : [];
 const careerData = Array.isArray(window.TECH_CARRIER_DATA) ? [...window.TECH_CARRIER_DATA] : [];
 
@@ -410,176 +415,118 @@ function runTypingEffect() {
   typeTimer = window.setTimeout(runTypingEffect, typingState.deleting ? 48 : 92);
 }
 
-function animateCounter(element, target) {
+function animateCounter(element, target, delay = 0) {
   if (!element) return;
-  const duration = 1000;
-  const start = performance.now();
+
+  const numericTarget = Math.max(0, Math.floor(Number(target) || 0));
+  const targetText = String(numericTarget);
+  const digitCount = Math.max(1, targetText.length);
+
+  if (prefersReducedMotion || numericTarget === 0) {
+    element.textContent = targetText;
+    return;
+  }
+
+  const duration = 1200;
+  const scrambleEnd = 0.64;
+  const startTime = performance.now() + delay;
+
+  function randomDigits() {
+    let result = "";
+    for (let index = 0; index < digitCount; index += 1) {
+      result += String(Math.floor(Math.random() * 10));
+    }
+    return result;
+  }
 
   function tick(now) {
-    const progress = Math.min((now - start) / duration, 1);
-    element.textContent = String(Math.floor(progress * target));
+    if (now < startTime) {
+      requestAnimationFrame(tick);
+      return;
+    }
+
+    const progress = Math.min((now - startTime) / duration, 1);
+    let display = targetText;
+
+    if (progress < scrambleEnd) {
+      const revealCount = Math.max(0, Math.floor((progress / scrambleEnd) * digitCount));
+      const fixedStart = digitCount - revealCount;
+      const scrambled = targetText
+        .split("")
+        .map((digit, index) => (index < fixedStart ? String(Math.floor(Math.random() * 10)) : digit))
+        .join("");
+
+      display = scrambled === targetText ? randomDigits() : scrambled;
+    } else {
+      const local = (progress - scrambleEnd) / (1 - scrambleEnd);
+      const eased = 1 - Math.pow(1 - local, 3);
+      display = String(Math.floor(numericTarget * eased)).padStart(digitCount, "0");
+      if (progress >= 1) display = targetText;
+    }
+
+    element.textContent = display;
+
     if (progress < 1) requestAnimationFrame(tick);
-    else element.textContent = String(target);
   }
 
   requestAnimationFrame(tick);
 }
 
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("revealed");
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.16 },
-);
-
-function observeReveals(scope = document) {
-  scope.querySelectorAll(".reveal:not(.revealed)").forEach((el) => revealObserver.observe(el));
-}
-
-function createTagList(tags = [], limit = 3) {
-  const visible = tags.slice(0, limit);
-  const extra = tags.length - visible.length;
-  return `
-    <div class="project-tech">
-      ${visible.map((tag) => `<span>${tag}</span>`).join("")}
-      ${extra > 0 ? `<span class="tag-more">+${extra}</span>` : ""}
-    </div>
-  `;
-}
-
-function createProjectCard(project, compact = true) {
-  const summaryClass = compact ? "project-summary" : "project-summary project-summary-full";
-  const demoDisabled = !project.demoUrl || project.demoUrl === "#";
-
-  return `
-    <article class="project-card reveal" data-project-id="${project.id}">
-      <div class="project-preview">
-        <img src="${project.image}" alt="${project.title}" loading="lazy" />
-        ${project.pinned ? '<div class="project-badge">Pinned</div>' : ""}
-      </div>
-      <div class="project-content">
-        <div class="project-title-row">
-          <h3>${project.title}</h3>
-        </div>
-        <p class="${summaryClass}">${localize(project.summary)}</p>
-        ${createTagList(project.tags, compact ? 3 : 4)}
-        <div class="project-buttons">
-          ${
-            demoDisabled
-              ? `<button type="button" class="btn btn-primary btn-disabled" disabled>${t("projects.comingSoon")}</button>`
-              : `<a href="${project.demoUrl}" class="btn btn-primary">${t("projects.demo")}</a>`
-          }
-          <a href="${project.githubUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-outline">${t("projects.github")}</a>
-        </div>
-      </div>
-    </article>
-  `;
-}
-
-function createMoreCard() {
-  return `
-    <button class="project-more-card reveal" type="button" id="project-more-trigger" aria-label="${t("projects.moreTitle")}">
-      <span class="project-more-arrow" aria-hidden="true"><span>&lt;</span></span>
-      <span class="project-more-title">${t("projects.moreTitle")}</span>
-    </button>
-  `;
-}
-
-function sortProjects(list) {
-  return [...list].sort((a, b) => {
-    const pinDiff = Number(b.pinned) - Number(a.pinned);
-    if (pinDiff !== 0) return pinDiff;
-    return Number(b.order || 0) - Number(a.order || 0);
-  });
-}
-
-function renderProjects() {
-  if (!projectGrid) return;
-
-  const sorted = sortProjects(projectData);
-  currentSortedProjects = sorted;
-  const featured = sorted.slice(0, 2);
-  const hasMore = sorted.length > 2;
-
-  projectGrid.innerHTML = `
-    ${featured.map((project) => createProjectCard(project, true)).join("")}
-    ${hasMore ? createMoreCard() : ""}
-  `;
-
-  const moreTrigger = document.getElementById("project-more-trigger");
-  if (moreTrigger) {
-    moreTrigger.addEventListener("click", () => openProjectModal(currentSortedProjects));
-  }
-
-  bindProjectMouseMove(projectGrid);
-  observeReveals(projectGrid);
-}
-
-function renderProjectModal(sortedProjects) {
-  if (!projectModalGrid) return;
-  projectModalGrid.innerHTML = sortedProjects.map((project) => createProjectCard(project, false)).join("");
-  bindProjectMouseMove(projectModalGrid);
-  observeReveals(projectModalGrid);
-}
-
-function openProjectModal(sortedProjects) {
-  if (!projectModal) return;
-  renderProjectModal(sortedProjects);
-  projectModal.classList.add("show");
-  projectModal.setAttribute("aria-hidden", "false");
-  document.body.classList.add("modal-open");
-}
-
-function closeProjectModal() {
-  if (!projectModal) return;
-  projectModal.classList.remove("show");
-  projectModal.setAttribute("aria-hidden", "true");
-  document.body.classList.remove("modal-open");
-}
-
-function renderCareerTimeline() {
-  const careerTimeline = document.getElementById("career-timeline");
-  if (!careerTimeline) return;
-
-  careerTimeline.innerHTML = careerData
-    .map((item, index) => {
-      const sideClass = index % 2 === 0 ? "career-entry left" : "career-entry right";
-      return `
-        <article class="${sideClass} reveal">
-          <div class="career-marker" aria-hidden="true"></div>
-          <div class="career-card">
-            <span class="career-year">${item.period}</span>
-            <h3>${localize(item.title)}</h3>
-            <p>${localize(item.summary)}</p>
-          </div>
-        </article>
-      `;
-    })
-    .join("");
-
-  observeReveals(careerTimeline);
-}
-
-function renderStats() {
+function getStatValues() {
   const currentYear = new Date().getFullYear();
   const yearsLearning = Math.max(0, currentYear - 2023);
 
-  const values = {
+  return {
     projects: projectData.length,
     awards: 2,
     years: yearsLearning,
     portfolioYear: currentYear,
   };
+}
+
+function renderStats() {
+  const values = getStatValues();
 
   Object.entries(values).forEach(([key, value]) => {
     const el = statsTargets[key];
-    if (el) animateCounter(el, value);
+    if (!el) return;
+
+    el.dataset.target = String(value);
+    el.textContent = statsAnimated ? String(value) : "0";
   });
+}
+
+function playStatsAnimation() {
+  if (statsAnimated) return;
+  statsAnimated = true;
+
+  const values = getStatValues();
+  Object.entries(values).forEach(([key, value], index) => {
+    const el = statsTargets[key];
+    if (el) animateCounter(el, value, index * 140);
+  });
+}
+
+function observeStats() {
+  if (!statsSection || statsObserver || typeof IntersectionObserver === "undefined") return;
+
+  statsObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          playStatsAnimation();
+          statsObserver.disconnect();
+          statsObserver = null;
+        }
+      });
+    },
+    {
+      threshold: 0.35,
+      rootMargin: "0px 0px -10% 0px",
+    },
+  );
+
+  statsObserver.observe(statsSection);
 }
 
 function bindProjectMouseMove(container) {
@@ -688,6 +635,7 @@ syncLanguageToggle();
 renderProjects();
 renderCareerTimeline();
 renderStats();
+observeStats();
 observeReveals();
 
 if (footer) {

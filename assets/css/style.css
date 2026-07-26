@@ -374,6 +374,18 @@ button{
   backdrop-filter:blur(16px);
 }
 
+.stat-card h2{
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .02em;
+  line-height: 1;
+  min-height: 1em;
+  transition: transform .25s ease, opacity .25s ease, filter .25s ease;
+}
+
+.stat-card.revealed h2{
+  filter: drop-shadow(0 0 14px rgba(99,102,241,.15));
+}
+
 .about-card{
   padding:34px;
   transition:.28s ease;
