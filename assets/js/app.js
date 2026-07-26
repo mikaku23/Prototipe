@@ -32,6 +32,8 @@ const statsSection = document.getElementById("stats");
 let statsAnimated = false;
 let statsObserver = null;
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+let langToggleRaf = null;
+let modalRenderRaf = null;
 
 const projectData = Array.isArray(window.PROJECT_DATA) ? [...window.PROJECT_DATA] : [];
 const careerData = Array.isArray(window.TECH_CARRIER_DATA) ? [...window.TECH_CARRIER_DATA] : [];
@@ -364,20 +366,23 @@ function syncLanguageToggle() {
     btn.setAttribute("aria-pressed", String(active));
   });
 
-  const indicator = langToggle.querySelector(".lang-toggle-indicator");
-  const activeBtn = langToggle.querySelector(`.lang-btn[data-lang="${currentLang}"]`);
-  if (indicator && activeBtn) {
-    const parentRect = langToggle.getBoundingClientRect();
-    const btnRect = activeBtn.getBoundingClientRect();
-    const offset = btnRect.left - parentRect.left;
-    indicator.style.width = `${btnRect.width}px`;
-    indicator.style.transform = `translateX(${offset}px)`;
-  }
-
   const idBtn = langToggle.querySelector('.lang-btn[data-lang="id"]');
   const enBtn = langToggle.querySelector('.lang-btn[data-lang="en"]');
   if (idBtn) idBtn.textContent = t("language.id");
   if (enBtn) enBtn.textContent = t("language.en");
+
+  if (langToggleRaf) window.cancelAnimationFrame(langToggleRaf);
+  langToggleRaf = window.requestAnimationFrame(() => {
+    const indicator = langToggle.querySelector(".lang-toggle-indicator");
+    const activeBtn = langToggle.querySelector(`.lang-btn[data-lang="${currentLang}"]`);
+    if (indicator && activeBtn) {
+      const parentRect = langToggle.getBoundingClientRect();
+      const btnRect = activeBtn.getBoundingClientRect();
+      const offset = btnRect.left - parentRect.left;
+      indicator.style.width = `${btnRect.width}px`;
+      indicator.style.transform = `translate3d(${offset}px, 0, 0)`;
+    }
+  });
 }
 
 function resetTypingEffect() {
@@ -499,14 +504,15 @@ function createTagList(tags = [], limit = 3) {
   `;
 }
 
-function createProjectCard(project, compact = true) {
+function createProjectCard(project, compact = true, reveal = true) {
   const summaryClass = compact ? "project-summary" : "project-summary project-summary-full";
   const demoDisabled = !project.demoUrl || project.demoUrl === "#";
+  const articleClass = reveal ? "project-card reveal" : "project-card";
 
   return `
-    <article class="project-card reveal" data-project-id="${project.id}">
+    <article class="${articleClass}" data-project-id="${project.id}">
       <div class="project-preview">
-        <img src="${project.image}" alt="${project.title}" loading="lazy" />
+        <img src="${project.image}" alt="${project.title}" loading="lazy" decoding="async" fetchpriority="low" />
         ${project.pinned ? '<div class="project-badge">Pinned</div>' : ""}
       </div>
       <div class="project-content">
@@ -569,21 +575,27 @@ function renderProjects() {
 
 function renderProjectModal(sortedProjects) {
   if (!projectModalGrid) return;
-  projectModalGrid.innerHTML = sortedProjects.map((project) => createProjectCard(project, false)).join("");
+  const html = sortedProjects.map((project) => createProjectCard(project, false, false)).join("");
+  projectModalGrid.innerHTML = html;
   bindProjectMouseMove(projectModalGrid);
-  observeReveals(projectModalGrid);
 }
 
 function openProjectModal(sortedProjects) {
   if (!projectModal) return;
-  renderProjectModal(sortedProjects);
   projectModal.classList.add("show");
   projectModal.setAttribute("aria-hidden", "false");
   document.body.classList.add("modal-open");
+
+  if (modalRenderRaf) window.cancelAnimationFrame(modalRenderRaf);
+  projectModalGrid.innerHTML = '<div class="project-modal-loading">Loading projects...</div>';
+  modalRenderRaf = window.requestAnimationFrame(() => {
+    renderProjectModal(sortedProjects);
+  });
 }
 
 function closeProjectModal() {
   if (!projectModal) return;
+  if (modalRenderRaf) window.cancelAnimationFrame(modalRenderRaf);
   projectModal.classList.remove("show");
   projectModal.setAttribute("aria-hidden", "true");
   document.body.classList.remove("modal-open");
