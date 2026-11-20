@@ -1,5 +1,3 @@
 import { initChatbot } from "./chatbot-ui.js";
 
-document.addEventListener("DOMContentLoaded", () => {
-  initChatbot();
-});
+document.addEventListener("DOMContentLoaded", initChatbot, { once: true });

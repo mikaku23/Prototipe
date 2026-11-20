@@ -1,368 +1,242 @@
 <!doctype html>
-<html lang="id">
+<html lang="id" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Primary Meta Tags -->
-    <title>Muhammad Haliq Maulana | Software Engineer Portfolio</title>
-
-    <meta
-      name="title"
-      content="Muhammad Haliq Maulana | Software Engineer Portfolio"
-    />
-    <meta
-      name="description"
-      content="Portfolio resmi Muhammad Haliq Maulana. Software Engineering Student, Laravel Developer, Web Developer, Provincial Champion IT Software Solutions for Business 2025, Medallion of Excellence LKS National 2025."
-    />
-
-    <meta
-      name="keywords"
-      content="
-Muhammad Haliq Maulana,
-Mikaku23,
-Portfolio,
-Web Developer,
-Laravel Developer,
-PHP Developer,
-Software Engineer,
-SMKN 1 Karang Baru,
-TechNote App,
-Absensi Siswa,
-Storage Barang,
-Website Perpustakaan,
-Laravel,
-MySQL,
-JavaScript,
-Aceh,
-Indonesia"
-    />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="theme-color" content="#08152d" />
+    <title>Muhammad Haliq Maulana — Informatics Engineering</title>
+    <meta name="description" content="Portfolio Muhammad Haliq Maulana — mahasiswa Teknik Informatika Universitas Malikussaleh, software developer, Laravel enthusiast, dan peraih penghargaan LKS 2025." />
+    <meta name="keywords" content="Muhammad Haliq Maulana, Mikaku23, Informatics Engineering, Universitas Malikussaleh, Laravel, PHP, JavaScript, C++, Linux Ubuntu, Software Developer, Portfolio" />
     <meta name="author" content="Muhammad Haliq Maulana" />
     <meta name="robots" content="index, follow" />
-    <meta name="language" content="Indonesian" />
-    <meta name="revisit-after" content="7 days" />
-
-    <!-- Canonical -->
     <link rel="canonical" href="https://haliqportfolio.vercel.app/" />
-
-    <link rel="stylesheet" href="assets/css/chatbot.css" />
-
-    <!-- Theme Color -->
-    <meta name="theme-color" content="#6366f1" />
-
-    <!-- Open Graph / Facebook -->
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
+    <link rel="apple-touch-icon" href="assets/images/profile.jpeg" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://haliqportfolio.vercel.app/" />
-    <meta
-      property="og:title"
-      content="Muhammad Haliq Maulana | Software Engineer Portfolio"
-    />
-    <meta
-      property="og:description"
-      content="Software Engineering Student, Laravel Developer, Web Developer, Provincial Champion IT Software Solutions for Business 2025, Medallion of Excellence LKS National 2025."
-    />
-    <meta
-      property="og:image"
-      content="https://haliqportfolio.vercel.app/assets/images/profile.jpeg"
-    />
-    <meta
-      property="og:image:secure_url"
-      content="https://haliqportfolio.vercel.app/assets/images/profile.jpeg"
-    />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:type" content="image/jpeg" />
-    <meta property="og:site_name" content="Muhammad Haliq Portfolio" />
-
+    <meta property="og:title" content="Muhammad Haliq Maulana — Portfolio" />
+    <meta property="og:description" content="Informatics Engineering student at Universitas Malikussaleh. Building useful web applications and digital systems." />
+    <meta property="og:image" content="https://haliqportfolio.vercel.app/assets/images/profile.jpeg" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="Muhammad Haliq Maulana | Software Engineer Portfolio"
-    />
-    <meta
-      name="twitter:description"
-      content="Laravel Developer, Web Developer, Software Engineering Student."
-    />
-    <meta
-      name="twitter:image"
-      content="https://haliqportfolio.vercel.app/assets/images/profile.jpeg"
-    />
-    <!-- Twitter / X -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://haliqportfolio.vercel.app/" />
-    <meta
-      name="twitter:title"
-      content="Muhammad Haliq Maulana | Software Engineer Portfolio"
-    />
-    <meta
-      name="twitter:description"
-      content="Laravel Developer, Web Developer, Software Engineering Student."
-    />
+    <meta name="twitter:title" content="Muhammad Haliq Maulana — Portfolio" />
+    <meta name="twitter:description" content="Informatics Engineering student, software developer, and LKS 2025 award recipient." />
+    <meta name="twitter:image" content="https://haliqportfolio.vercel.app/assets/images/profile.jpeg" />
 
-    <meta
-      name="twitter:image"
-      content="https://haliqportfolio.vercel.app/assets/images/profile.jpeg"
-    />
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="assets/images/favicon.png" />
-    <link rel="apple-touch-icon" href="assets/images/favicon.png" />
-
-    <!-- Mobile -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta
-      name="apple-mobile-web-app-status-bar-style"
-      content="black-translucent"
-    />
-
-    <link
-      href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css"
-      rel="stylesheet"
-    />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/chatbot.css" />
   </head>
   <body>
-    <header class="header" id="header">
-      <nav class="nav container">
-        <a href="#home" class="logo"><span>MHM</span></a>
+    <div class="page-progress" id="page-progress" aria-hidden="true"></div>
+
+    <header class="site-header" id="header">
+      <nav class="nav-shell" aria-label="Main navigation">
+        <a class="brand" href="#home" aria-label="Muhammad Haliq Maulana — Home">
+          <span class="brand-mark">M</span>
+          <span class="brand-name">MHM<span class="brand-dot">.</span></span>
+        </a>
 
         <div class="nav-menu" id="nav-menu">
           <ul class="nav-list">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#achievements">Achievements</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#experience">Tech Career</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#home" data-i18n="nav.home">Home</a></li>
+            <li><a href="#about" data-i18n="nav.about">About</a></li>
+            <li><a href="#achievements" data-i18n="nav.achievements">Awards</a></li>
+            <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+            <li><a href="#now" data-i18n="nav.now">Now</a></li>
+            <li><a href="#experience" data-i18n="nav.journey">Journey</a></li>
+            <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
           </ul>
         </div>
 
         <div class="nav-actions">
-          <div class="lang-toggle" id="lang-toggle" aria-label="Language toggle">
-            <span class="lang-toggle-indicator" aria-hidden="true"></span>
-            <button type="button" class="lang-btn" data-lang="id">ID</button>
-            <button type="button" class="lang-btn" data-lang="en">EN</button>
+          <div class="language-switch" id="lang-toggle" aria-label="Language selector">
+            <span class="language-indicator" aria-hidden="true"></span>
+            <button class="language-btn" type="button" data-lang="id" aria-pressed="true">ID</button>
+            <button class="language-btn" type="button" data-lang="en" aria-pressed="false">EN</button>
           </div>
-          <button type="button" class="theme-btn" id="theme-toggle" aria-label="Toggle theme">
-            <i class="ri-moon-line"></i>
+          <button class="icon-button theme-button" id="theme-toggle" type="button" aria-label="Switch theme" title="Switch theme">
+            <i class="ri-sun-line" aria-hidden="true"></i>
           </button>
-          <button type="button" class="menu-btn" id="menu-btn" aria-label="Toggle menu">
-            <i class="ri-menu-line"></i>
+          <button class="icon-button menu-button" id="menu-btn" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-menu">
+            <i class="ri-menu-3-line" aria-hidden="true"></i>
           </button>
         </div>
       </nav>
     </header>
 
     <main>
-      <section class="hero section" id="home">
-        <div class="hero-bg"></div>
-        <div class="container hero-container">
-          <div class="hero-content">
-            <span class="hero-tag">WEB DEVELOPER</span>
-
-            <h1>
-              Muhammad <br />
-              Haliq Maulana
-            </h1>
-
-            <div class="hero-badges">
-              <span>🏆 Provincial Champion 2025</span>
-              <span>🥇 Medallion of Excellence National LKS 2025</span>
+      <section class="hero section-shell" id="home">
+        <div class="hero-ambient hero-ambient-one" aria-hidden="true"></div>
+        <div class="hero-ambient hero-ambient-two" aria-hidden="true"></div>
+        <div class="hero-layout content-width">
+          <div class="hero-copy">
+            <div class="hero-eyebrow">
+              <span class="status-orb" aria-hidden="true"></span>
+              <span data-i18n="hero.eyebrow">INFORMATICS ENGINEERING · UNIVERSITAS MALIKUSSALEH</span>
             </div>
-
-            <h3 id="typing-text">Laravel Developer</h3>
-
-            <p>
-              I am a Software Engineering (RPL) student at SMKN 1 Karang Baru
-              with a strong passion for technology and software development.
-              Throughout my studies, I have gained knowledge and experience in
-              various areas of computer science and programming, ranging from
-              system design and application development to website testing,
-              ensuring optimal quality and functionality. I am skilled in
-              building web applications using PHP and the Laravel Framework, and
-              capable of developing responsive, well-structured, and
-              user-oriented web solutions that meet both functional and
-              technical requirements.
+            <p class="hero-kicker" data-i18n="hero.kicker">Software, systems & thoughtful digital experiences</p>
+            <h1>Muhammad<br /><span>Haliq Maulana</span></h1>
+            <div class="hero-awards" aria-label="Competition awards">
+              <span class="award-pill"><i class="ri-trophy-line" aria-hidden="true"></i><span data-i18n="hero.awardProvincial">1st Place · LKS Provincial 2025</span></span>
+              <span class="award-pill"><i class="ri-medal-line" aria-hidden="true"></i><span data-i18n="hero.awardNational">Medallion of Excellence · LKS National 2025</span></span>
+            </div>
+            <div class="hero-role-line"><span class="role-prefix" data-i18n="hero.rolePrefix">Currently exploring</span><h2 id="typing-text" aria-live="polite">Software Development</h2><span class="typing-caret" aria-hidden="true"></span></div>
+            <p class="hero-description" data-i18n="hero.description">
+              Mahasiswa Teknik Informatika di Universitas Malikussaleh dengan latar belakang Rekayasa Perangkat Lunak dari SMKN 1 Karang Baru. Saya tertarik membangun aplikasi web dan sistem digital yang terstruktur, aman, dan bermanfaat.
             </p>
-
-            <div class="hero-buttons">
-              <a href="#projects" class="btn btn-primary">View Projects</a>
-              <a
-                href="https://github.com/mikaku23"
-                target="_blank"
-                class="btn btn-outline"
-                >GitHub</a
-              >
+            <div class="hero-actions">
+              <a class="button button-primary" href="#projects"><span data-i18n="hero.projectsCta">Explore projects</span><i class="ri-arrow-up-right-line" aria-hidden="true"></i></a>
+              <a class="button button-glass" href="https://github.com/mikaku23" target="_blank" rel="noopener noreferrer"><i class="ri-github-line" aria-hidden="true"></i> GitHub</a>
             </div>
+            <div class="hero-footnote"><i class="ri-map-pin-2-line" aria-hidden="true"></i><span data-i18n="hero.location">Aceh, Indonesia</span><span class="footnote-divider"></span><span data-i18n="hero.availability">Open to thoughtful collaborations</span></div>
           </div>
 
-          <div class="hero-image">
-            <div class="profile-card">
-              <div class="profile-glow"></div>
-              <img src="assets/images/profile.jpeg" alt="Profile" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="about section" id="about">
-        <div class="container">
-          <div class="section-title">
-            <span>ABOUT</span>
-            <h2>About Me</h2>
-          </div>
-
-          <div class="about-grid">
-            <div class="about-card reveal">
-              <h3>Profile</h3>
-              <p>
-                I am a Software Engineering (RPL) student at SMKN 1 Karang Baru
-                with a strong passion for technology and software development. I
-                focus on building responsive, structured, and user-oriented web
-                solutions.
-              </p>
-            </div>
-
-            <div class="about-card reveal">
-              <h3>Tech Stack</h3>
-              <div class="skills">
-                <span>HTML</span>
-                <span>CSS</span>
-                <span>JavaScript</span>
-                <span>PHP</span>
-                <span>Laravel</span>
-                <span>MySQL</span>
-                <span>API</span>
-                <span>Bootstrap</span>
-                <span>Git</span>
-                <span>GitHub</span>
+          <div class="hero-visual">
+            <div class="portrait-halo" aria-hidden="true"></div>
+            <div class="portrait-frame">
+              <img src="assets/images/profile.jpeg" alt="Portrait of Muhammad Haliq Maulana" fetchpriority="high" />
+              <div class="portrait-caption">
+                <span class="caption-avatar">M</span>
+                <span><strong>Muhammad Haliq Maulana</strong><small data-i18n="hero.portraitCaption">Informatics Engineering Student</small></span>
+                <span class="caption-live" aria-label="Profile"></span>
               </div>
             </div>
+            <div class="floating-note floating-note-top"><span class="note-icon"><i class="ri-code-s-slash-line" aria-hidden="true"></i></span><span><strong>Build with purpose</strong><small data-i18n="hero.noteOne">From ideas to useful systems</small></span></div>
+            <div class="floating-note floating-note-bottom"><span class="note-icon note-icon-award"><i class="ri-award-line" aria-hidden="true"></i></span><span><strong>2025</strong><small data-i18n="hero.noteTwo">Provincial & national recognition</small></span></div>
           </div>
         </div>
+        <a class="scroll-cue" href="#about" aria-label="Scroll to about section"><span></span><small data-i18n="hero.scroll">Scroll to explore</small></a>
       </section>
 
-      <section class="achievements section" id="achievements">
-        <div class="container">
-          <div class="section-title">
-            <span>ACHIEVEMENTS</span>
-            <h2>Achievements & Awards</h2>
+      <section class="section-shell section-block" id="about">
+        <div class="content-width">
+          <div class="section-heading reveal">
+            <span class="section-eyebrow" data-i18n="about.eyebrow">A LITTLE ABOUT ME</span>
+            <h2 data-i18n="about.title">A foundation built through curiosity.</h2>
+            <p data-i18n="about.lead">Perjalanan dari pendidikan vokasi ke Teknik Informatika membentuk cara saya memahami teknologi: mulai dari kebutuhan, lalu merancang solusi yang dapat digunakan.</p>
           </div>
 
-          <div class="achievement-grid">
-            <article class="achievement-card reveal">
-              <div class="achievement-icon">🏆</div>
-              <div class="achievement-meta">
-                LKSN Provincial Level • June 2025
-              </div>
-              <h3>1st Place IT Software Solutions for Business</h3>
-              <p>Meulaboh, Aceh Barat</p>
+          <div class="about-layout">
+            <article class="glass-card profile-card reveal">
+              <div class="card-topline"><span class="card-index">01</span><span class="card-label" data-i18n="about.profileLabel">PROFILE</span></div>
+              <h3 data-i18n="about.profileTitle">From software engineering to informatics.</h3>
+              <p data-i18n="about.profileText">Saya mahasiswa Teknik Informatika di Universitas Malikussaleh, dengan fondasi Rekayasa Perangkat Lunak (RPL) dari SMKN 1 Karang Baru. Latar belakang SMK membentuk pengalaman awal dalam pengembangan web, perancangan sistem, basis data, pengujian, dan pemecahan masalah. Saat ini saya melanjutkan pengembangan kemampuan di bidang software engineering, algoritma, pemrograman, dan sistem digital. Saya terbiasa membangun proyek menggunakan PHP/Laravel, JavaScript, dan MySQL, serta terus mengeksplorasi C++, Linux Ubuntu, dan integrasi API.</p>
+              <div class="profile-focus"><span class="focus-dot"></span><span data-i18n="about.focus">Interested in software engineering, web applications, and intelligent systems.</span></div>
             </article>
 
-            <article class="achievement-card reveal">
-              <div class="achievement-icon">🥇</div>
-              <div class="achievement-meta">
-                LKSN National Level • August 2025
-              </div>
-              <h3>Medallion of Excellence IT Software for Business</h3>
-              <p>Jakarta / Jawa Barat</p>
-            </article>
+            <div class="about-side">
+              <article class="glass-card education-card reveal">
+                <div class="card-topline"><span class="card-index">02</span><span class="card-label" data-i18n="about.educationLabel">EDUCATION</span></div>
+                <div class="education-item education-current">
+                  <span class="education-mark"><i class="ri-graduation-cap-line" aria-hidden="true"></i></span>
+                  <div><span class="education-state" data-i18n="about.current">CURRENT</span><h3>Universitas Malikussaleh</h3><p data-i18n="about.university">Teknik Informatika · Informatics Engineering</p><small data-i18n="about.universityPeriod">2026 — Present</small></div>
+                </div>
+                <div class="education-separator"></div>
+                <div class="education-item">
+                  <span class="education-mark education-mark-muted"><i class="ri-book-open-line" aria-hidden="true"></i></span>
+                  <div><span class="education-state" data-i18n="about.alumni">ALUMNI</span><h3>SMKN 1 Karang Baru</h3><p data-i18n="about.vocational">Rekayasa Perangkat Lunak (RPL)</p><small data-i18n="about.vocationalPeriod">2023 — 2026</small></div>
+                </div>
+              </article>
+
+              <article class="glass-card stack-card reveal">
+                <div class="card-topline"><span class="card-index">03</span><span class="card-label" data-i18n="about.stackLabel">TECH STACK & TOOLS</span></div>
+                <h3 data-i18n="about.stackTitle">Tools I work and learn with.</h3>
+                <div class="skill-cloud" id="skill-cloud" aria-label="Technology stack">
+                  <span>HTML</span><span>CSS</span><span>JavaScript</span><span>PHP</span><span>Laravel</span><span>MySQL</span><span>API</span><span>Bootstrap</span><span>Git</span><span>GitHub</span><span>Shell</span><span>Linux Ubuntu</span><span>C++</span><span>Algorithms</span>
+                </div>
+              </article>
+            </div>
           </div>
         </div>
       </section>
 
-      
-      <section class="projects section" id="projects">
-        <div class="container">
-          <div class="section-title">
-            <span>PORTFOLIO</span>
-            <h2>Featured Projects</h2>
+      <section class="section-shell section-block" id="achievements">
+        <div class="content-width">
+          <div class="section-heading reveal">
+            <span class="section-eyebrow" data-i18n="achievements.eyebrow">MILESTONES</span>
+            <h2 data-i18n="achievements.title">Achievements & recognition.</h2>
+            <p data-i18n="achievements.lead">Dua pencapaian dari kompetisi keterampilan siswa tingkat provinsi dan nasional pada 2025.</p>
           </div>
+          <div class="achievement-grid" id="achievement-grid"></div>
+        </div>
+      </section>
 
+      <section class="section-shell section-block projects-section" id="projects">
+        <div class="content-width">
+          <div class="section-heading section-heading-row reveal">
+            <div><span class="section-eyebrow" data-i18n="projects.eyebrow">SELECTED WORK</span><h2 data-i18n="projects.title">Projects shaped by real problems.</h2><p data-i18n="projects.lead">Beberapa eksperimen dan aplikasi yang saya bangun selama belajar dan mengembangkan solusi digital.</p></div>
+            <button class="button button-glass projects-all-trigger" id="projects-all-trigger" type="button"><span data-i18n="projects.viewAll">View all projects</span><i class="ri-arrow-up-right-line" aria-hidden="true"></i></button>
+          </div>
           <div class="project-grid" id="project-grid" aria-live="polite"></div>
         </div>
       </section>
 
-      <div class="project-modal" id="project-modal" aria-hidden="true">
-        <div class="project-modal-backdrop" data-modal-close></div>
-        <div class="project-modal-panel liquid-glass" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
-          <button class="project-modal-close" type="button" data-modal-close aria-label="Close projects">
-            <i class="ri-close-line"></i>
-          </button>
-
-          <div class="project-modal-head">
-            <span class="modal-kicker">All Projects</span>
-            <h3 id="project-modal-title">Lihat semua project</h3>
-            <p>Daftar lengkap project dibuat lebih compact agar ringan, rapi, dan tetap nyaman di desktop maupun mobile.</p>
+      <section class="section-shell section-block" id="now">
+        <div class="content-width">
+          <div class="section-heading reveal">
+            <span class="section-eyebrow" data-i18n="now.eyebrow">CURRENTLY</span>
+            <h2 data-i18n="now.title">What I am focused on now.</h2>
+            <p data-i18n="now.lead">Ruang ini disiapkan untuk pembaruan fokus, hal yang sedang dipelajari, dan arah kolaborasi berikutnya.</p>
           </div>
-
-          <div class="project-modal-grid" id="project-modal-grid"></div>
-        </div>
-      </div>
-
-      <section class="career section" id="experience">
-        <div class="container">
-          <div class="section-title">
-            <span>TECH CARRIER</span>
-            <h2>Tech Career Timeline</h2>
+          <div class="now-grid">
+            <article class="glass-card now-card reveal"><span class="now-icon"><i class="ri-focus-3-line" aria-hidden="true"></i></span><span class="card-label" data-i18n="now.focusLabel">CURRENT FOCUS</span><h3 data-i18n="now.focusTitle">Current focus</h3><p data-i18n="now.focusDesc">Tambahkan fokus utama atau pekerjaan yang sedang berjalan.</p><span class="add-placeholder">Add <i class="ri-add-line" aria-hidden="true"></i></span></article>
+            <article class="glass-card now-card reveal"><span class="now-icon"><i class="ri-lightbulb-line" aria-hidden="true"></i></span><span class="card-label" data-i18n="now.learningLabel">LEARNING NOTES</span><h3 data-i18n="now.learningTitle">Currently learning</h3><p data-i18n="now.learningDesc">Tambahkan topik, teknologi, atau konsep yang sedang diperdalam.</p><span class="add-placeholder">Add <i class="ri-add-line" aria-hidden="true"></i></span></article>
+            <article class="glass-card now-card reveal"><span class="now-icon"><i class="ri-links-line" aria-hidden="true"></i></span><span class="card-label" data-i18n="now.collabLabel">COLLABORATION</span><h3 data-i18n="now.collabTitle">Open to collaboration</h3><p data-i18n="now.collabDesc">Tambahkan jenis kolaborasi, kontribusi, atau diskusi yang diminati.</p><span class="add-placeholder">Add <i class="ri-add-line" aria-hidden="true"></i></span></article>
           </div>
-
-          <div class="career-timeline" id="career-timeline"></div>
         </div>
       </section>
 
-      <section class="stats section" id="stats">
-        <div class="container">
-          <div class="stats-grid">
-            <div class="stat-card reveal">
-              <h2 data-stat="projects">0</h2>
-              <p>Major Projects</p>
-            </div>
-            <div class="stat-card reveal">
-              <h2 data-stat="awards">0</h2>
-              <p>National Awards</p>
-            </div>
-            <div class="stat-card reveal">
-              <h2 data-stat="years">0</h2>
-              <p>Years Learning</p>
-            </div>
-            <div class="stat-card reveal">
-              <h2 data-stat="portfolioYear">0</h2>
-              <p>Portfolio Year</p>
+      <section class="section-shell section-block journey-section" id="experience">
+        <div class="content-width">
+          <div class="section-heading reveal">
+            <span class="section-eyebrow" data-i18n="journey.eyebrow">THE JOURNEY</span>
+            <h2 data-i18n="journey.title">A timeline of learning and building.</h2>
+            <p data-i18n="journey.lead">Perjalanan pendidikan, pengalaman, dan proyek disusun sebagai alur waktu yang terus berkembang.</p>
+          </div>
+          <div class="career-timeline" id="career-timeline"><div class="timeline-track" aria-hidden="true"><span class="timeline-track-progress"></span></div><div class="timeline-entries" id="timeline-entries"></div></div>
+        </div>
+      </section>
+
+      <section class="section-shell section-block stats-section" id="stats">
+        <div class="content-width">
+          <div class="stats-panel reveal">
+            <div class="stats-intro"><span class="section-eyebrow" data-i18n="stats.eyebrow">AT A GLANCE</span><h2 data-i18n="stats.title">A few numbers along the way.</h2></div>
+            <div class="stats-grid">
+              <article class="stat-item"><strong data-stat="projects">0</strong><span data-i18n="stats.projects">Major projects</span><small data-i18n="stats.projectsNote">Listed in this portfolio</small></article>
+              <article class="stat-item"><strong data-stat="awards">0</strong><span data-i18n="stats.awards">Competition honors</span><small data-i18n="stats.awardsNote">Provincial & national, 2025</small></article>
+              <article class="stat-item"><strong data-stat="years">0</strong><span data-i18n="stats.years">Years learning</span><small data-i18n="stats.yearsNote">Since 2023 · vocational to university</small></article>
+              <article class="stat-item"><strong data-stat="portfolioYear">0</strong><span data-i18n="stats.year">Portfolio year</span><small data-i18n="stats.yearNote">Automatically updated</small></article>
             </div>
           </div>
         </div>
       </section>
-<section class="contact section" id="contact">
-        <div class="container">
-          <div class="contact-card reveal">
-            <h2>Let's Connect</h2>
-            <p>Terbuka untuk diskusi, kolaborasi, dan pengembangan proyek.</p>
+
+      <section class="section-shell section-block contact-section" id="contact">
+        <div class="content-width">
+          <div class="contact-panel reveal">
+            <div class="contact-orb" aria-hidden="true"></div>
+            <div class="contact-copy"><span class="section-eyebrow" data-i18n="contact.eyebrow">HAVE SOMETHING IN MIND?</span><h2 data-i18n="contact.title">Let's build something meaningful.</h2><p data-i18n="contact.description">Terbuka untuk diskusi, kolaborasi, dan pengembangan proyek. Hubungi saya melalui kanal berikut.</p></div>
             <div class="contact-links">
-              <a
-                href="https://github.com/mikaku23"
-                target="_blank"
-                aria-label="GitHub"
-                ><i class="ri-github-fill"></i
-              ></a>
-              <a href="mailto:haliqksp@gmail.com" aria-label="Email"
-                ><i class="ri-mail-fill"></i
-              ></a>
-              <a
-                href="https://www.instagram.com/haliq_maulana"
-                aria-label="Instagram"
-                ><i class="ri-instagram-fill"></i
-              ></a>
+              <a href="mailto:haliqksp@gmail.com" class="contact-link"><span><i class="ri-mail-line" aria-hidden="true"></i></span><span><small>Email</small><strong>haliqksp@gmail.com</strong></span><i class="ri-arrow-up-right-line link-arrow" aria-hidden="true"></i></a>
+              <a href="https://github.com/mikaku23" target="_blank" rel="noopener noreferrer" class="contact-link"><span><i class="ri-github-line" aria-hidden="true"></i></span><span><small>GitHub</small><strong>github.com/mikaku23</strong></span><i class="ri-arrow-up-right-line link-arrow" aria-hidden="true"></i></a>
+              <a href="https://www.instagram.com/haliq_maulana" target="_blank" rel="noopener noreferrer" class="contact-link"><span><i class="ri-instagram-line" aria-hidden="true"></i></span><span><small>Instagram</small><strong>@haliq_maulana</strong></span><i class="ri-arrow-up-right-line link-arrow" aria-hidden="true"></i></a>
             </div>
           </div>
         </div>
       </section>
     </main>
 
-    <footer class="footer">
-      <p>© 2026 Muhammad Haliq Maulana</p>
-    </footer>
+    <footer class="site-footer"><div class="content-width footer-inner"><a class="footer-brand" href="#home">MHM<span>.</span></a><p data-i18n="footer.note">Designed with care. Built with curiosity.</p><small>© <span id="footer-year">2026</span> Muhammad Haliq Maulana</small></div></footer>
+
+    <div class="modal-layer" id="project-modal" aria-hidden="true">
+      <button class="modal-backdrop" type="button" data-modal-close aria-label="Close project list"></button>
+      <section class="projects-modal-panel genie-panel" role="dialog" aria-modal="true" aria-labelledby="project-modal-title" tabindex="-1">
+        <div class="modal-heading"><div><span class="section-eyebrow" data-i18n="projects.modalEyebrow">PROJECT ARCHIVE</span><h2 id="project-modal-title" data-i18n="projects.modalTitle">All projects</h2><p data-i18n="projects.modalDescription">A broader view of the work, prototypes, and experiments.</p></div><button class="icon-button modal-close" type="button" data-modal-close aria-label="Close"><i class="ri-close-line" aria-hidden="true"></i></button></div>
+        <div class="project-modal-grid" id="project-modal-grid"></div>
+      </section>
+    </div>
 
     <script src="assets/js/DataProject.js"></script>
     <script src="assets/js/TechCarier.js"></script>
@@ -374,17 +248,14 @@ Indonesia"
         "name": "Muhammad Haliq Maulana",
         "url": "https://haliqportfolio.vercel.app",
         "image": "https://haliqportfolio.vercel.app/assets/images/profile.jpeg",
-        "jobTitle": "Software Engineering Student",
-        "description": "Laravel Developer and Web Developer",
-        "alumniOf": "SMKN 1 Karang Baru",
-        "sameAs": ["https://github.com/mikaku23"]
+        "description": "Informatics Engineering student at Universitas Malikussaleh with a background in Software Engineering and web application development.",
+        "alumniOf": {"@type": "EducationalOrganization", "name": "SMKN 1 Karang Baru"},
+        "affiliation": {"@type": "EducationalOrganization", "name": "Universitas Malikussaleh"},
+        "sameAs": ["https://github.com/mikaku23", "https://www.instagram.com/haliq_maulana"]
       }
     </script>
-
     <script>
-      window.CHATBOT_CONFIG = {
-        botName: "MHM Assistant",
-      };
+      window.CHATBOT_CONFIG = { botName: "MHM AI", endpoint: "/api/chat" };
     </script>
     <script type="module" src="assets/js/chatbot-main.js"></script>
   </body>
