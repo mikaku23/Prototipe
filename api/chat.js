@@ -8,6 +8,8 @@ const MAX_HISTORY_ITEMS = 10;
 const RATE_WINDOW_MS = 60 * 1000;
 const RATE_MAX_REQUESTS = 10;
 const UPSTREAM_TIMEOUT_MS = 22000;
+// OpenRouter selects an available free model dynamically for each request.
+const OPENROUTER_MODEL = "openrouter/free";
 
 const SYSTEM_PROMPT = `You are MHM AI, the public portfolio assistant for Muhammad Haliq Maulana.
 
@@ -178,6 +180,7 @@ module.exports = async function handler(req, res) {
         "X-Title": "MHM Portfolio AI"
       },
       body: JSON.stringify({
+        model: OPENROUTER_MODEL,
         messages: [
           { role: "system", content: SYSTEM_PROMPT },
           ...history,

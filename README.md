@@ -51,3 +51,7 @@ Edit `assets/js/DataProject.js`. Add a new object to `window.PROJECT_DATA`, set 
 ## Update the timeline and current focus
 
 Edit `assets/js/TechCarier.js` for timeline events. The completed/current/upcoming marker is calculated from each event's `start` and `end` dates. The three cards in the **Now** section are intentionally placeholders; edit their copy in `index.html` when the information is ready.
+
+### Chatbot model routing
+
+The Vercel API endpoint uses OpenRouter's `openrouter/free` router. It selects an available free model dynamically; no individual provider/model is hardcoded. Only `OPENROUTER_API_KEY` is required in Vercel Environment Variables.
