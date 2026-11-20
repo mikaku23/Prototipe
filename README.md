@@ -19,10 +19,10 @@ Static HTML/CSS/JavaScript portfolio with an Apple-inspired glass interface, res
 1. Create or select an API key in your OpenRouter account.
 2. Open the Vercel project → **Settings → Environment Variables**.
 3. Add `OPENROUTER_API_KEY` and paste your key as the value. Do not put the key in HTML, CSS, frontend JavaScript, or a committed file.
-4. Add `OPENROUTER_MODEL` with `deepseek/deepseek-chat:free` to start with the DeepSeek free endpoint. You can change this value later to another model ID available in OpenRouter.
-5. Redeploy the project so the function receives the environment variables.
+4. No model variable is required. The server intentionally omits the `model` field, so OpenRouter uses the default model configured for the API account/key. Set or change that default in OpenRouter if needed. If `OPENROUTER_MODEL` was added during an earlier setup, it is no longer read by this version and can be removed.
+5. Redeploy the project so the function receives the environment variable.
 
-The DeepSeek free endpoint is currently listed as free by OpenRouter, but it is an older DeepSeek V3 endpoint and free variants are rate-limited (OpenRouter currently documents 20 requests/minute and 50 requests/day for free variants under the default tier). Free model availability, quotas, and identifiers can change. The selected model is configurable through `OPENROUTER_MODEL`.
+The portfolio does not hard-code DeepSeek, a free-model router, or another model ID. Model choice follows the OpenRouter account default, as documented by OpenRouter. Availability, pricing, and account-level defaults are controlled by OpenRouter and may change.
 
 ## Local development
 
@@ -31,7 +31,8 @@ The chatbot endpoint requires a serverless runtime. Do not open `index.html` dir
 1. Install the Vercel CLI.
 2. Copy `.env.example` to `.env.local`.
 3. Put your own key in `.env.local` (the file is excluded by `.gitignore`).
-4. Run `vercel dev` from the project root.
+4. Configure the desired default model in your OpenRouter account; no model ID is passed by this project.
+5. Run `vercel dev` from the project root.
 
 ## Security notes
 
@@ -39,6 +40,7 @@ The chatbot endpoint requires a serverless runtime. Do not open `index.html` dir
 - `.env.local` and other `.env.*` secret files are ignored by Git. The safe `.env.example` remains tracked.
 - Keep `api/chat.js` in Git: it is the server endpoint Vercel must deploy. Ignoring that file would break the chatbot.
 - The endpoint validates request size and message length, accepts only user/assistant history, checks same-origin browser requests, applies best-effort per-instance rate limiting, uses a timeout, and does not trust client-supplied portfolio context.
+- Upstream OpenRouter errors are mapped to safe client error codes; sanitized provider status/details are written to Vercel Runtime Logs. API keys and bearer tokens are redacted from those log messages.
 - Prompt-injection instructions are explicitly treated as untrusted input. No prompt-only design can guarantee that an LLM is impossible to jailbreak; use usage limits and provider budget controls as additional safeguards.
 - The in-memory rate limiter is best-effort and is not a substitute for a persistent distributed rate limiter or WAF on a high-traffic public site.
 

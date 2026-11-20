@@ -7,7 +7,7 @@ export function initChatbot() {
   floating.id = "floating-chat";
   floating.innerHTML = `
     <button id="chat-toggle" type="button" aria-label="Buka MHM AI" aria-expanded="false" aria-controls="chat-popup" title="MHM AI">
-      <i class="ri-sparkling-2-line" aria-hidden="true"></i>
+      <i class="ri-message-3-line" aria-hidden="true"></i>
     </button>
   `;
 
@@ -21,12 +21,12 @@ export function initChatbot() {
   popup.innerHTML = `
     <div class="chat-header">
       <div class="chat-brand">
-        <span class="chat-brand-icon"><i class="ri-sparkling-2-line" aria-hidden="true"></i></span>
+        <span class="chat-brand-icon"><i class="ri-message-3-line" aria-hidden="true"></i></span>
         <span class="chat-brand-copy"><strong class="chat-name">MHM AI</strong><small class="chat-subtitle">Asisten portofolio Muhammad Haliq</small></span>
       </div>
       <button class="chat-close" id="chat-close" type="button" aria-label="Tutup chatbot"><i class="ri-close-line" aria-hidden="true"></i></button>
     </div>
-    <div class="chat-status-row"><span class="chat-status-dot"></span><span class="chat-status-label">AI assistant</span><span class="chat-status-separator"></span><span>OpenRouter API</span></div>
+    <div class="chat-status-row"><span class="chat-status-dot"></span><span class="chat-status-label">Asisten portofolio</span></div>
     <div class="chat-messages" id="chat-messages" aria-live="polite" aria-relevant="additions">
       <div class="chat-welcome" id="chat-welcome"><strong>Halo, saya MHM AI.</strong><br />Tanyakan profil, pendidikan, prestasi, proyek, teknologi yang digunakan, atau pertanyaan umum. Jawaban AI diproses melalui API server.</div>
     </div>
@@ -57,10 +57,10 @@ export function initChatbot() {
 
   const copy = {
     id: {
-      name: "MHM AI", subtitle: "Asisten portofolio Muhammad Haliq", welcome: "Halo, saya MHM AI.\nTanyakan profil, pendidikan, prestasi, proyek, teknologi yang digunakan, atau pertanyaan umum. Jawaban AI diproses melalui API server.", placeholder: "Tulis pertanyaan...", disclaimer: "Jangan kirim kata sandi, API key, atau informasi pribadi sensitif.", ready: "AI assistant", typing: "Sedang menyusun jawaban...", failed: "Chatbot belum dapat terhubung. Periksa konfigurasi API OpenRouter di environment Vercel.", limited: "Batas permintaan tercapai. Coba lagi sebentar lagi.", unavailable: "Layanan AI sedang tidak tersedia. Coba lagi nanti.", tooLong: "Pesan terlalu panjang. Maksimum 1.800 karakter.", suggestions: ["Profil Haliq", "TechNote 2.0", "Tracking Barang"]
+      name: "MHM AI", subtitle: "Asisten portofolio Muhammad Haliq", welcome: "Halo, saya MHM AI.\nTanyakan profil, pendidikan, prestasi, proyek, teknologi yang digunakan, atau pertanyaan umum. Jawaban AI diproses melalui API server.", placeholder: "Tulis pertanyaan...", disclaimer: "Jangan kirim kata sandi, API key, atau informasi pribadi sensitif.", ready: "Asisten portofolio", typing: "Sedang menyusun jawaban...", failed: "Chatbot belum dapat terhubung. Periksa konfigurasi API OpenRouter di environment Vercel.", limited: "Batas permintaan tercapai. Coba lagi sebentar lagi.", unavailable: "Layanan AI sedang tidak tersedia. Coba lagi nanti.", tooLong: "Pesan terlalu panjang. Maksimum 1.800 karakter.", suggestions: ["Profil Haliq", "TechNote 2.0", "Tracking Barang"]
     },
     en: {
-      name: "MHM AI", subtitle: "Muhammad Haliq's portfolio assistant", welcome: "Hello, I'm MHM AI.\nAsk about the profile, education, achievements, projects, technologies, or general topics. AI responses are processed through the server API.", placeholder: "Ask a question...", disclaimer: "Do not send passwords, API keys, or sensitive personal information.", ready: "AI assistant", typing: "Preparing an answer...", failed: "The chatbot could not connect. Check the OpenRouter API environment configuration on Vercel.", limited: "Request limit reached. Please try again shortly.", unavailable: "The AI service is temporarily unavailable. Please try again later.", tooLong: "Your message is too long. Maximum length is 1,800 characters.", suggestions: ["Haliq's profile", "TechNote 2.0", "Campus tracking"]
+      name: "MHM AI", subtitle: "Muhammad Haliq's portfolio assistant", welcome: "Hello, I'm MHM AI.\nAsk about the profile, education, achievements, projects, technologies, or general topics. AI responses are processed through the server API.", placeholder: "Ask a question...", disclaimer: "Do not send passwords, API keys, or sensitive personal information.", ready: "Portfolio assistant", typing: "Preparing an answer...", failed: "The chatbot could not connect. Check the OpenRouter API environment configuration on Vercel.", limited: "Request limit reached. Please try again shortly.", unavailable: "The AI service is temporarily unavailable. Please try again later.", tooLong: "Your message is too long. Maximum length is 1,800 characters.", suggestions: ["Haliq's profile", "TechNote 2.0", "Campus tracking"]
     }
   };
   let activeLanguage = document.documentElement.lang === "en" ? "en" : "id";
@@ -122,8 +122,12 @@ export function initChatbot() {
   }
 
   function errorMessage(error) {
-    if (error?.status === 429) return copy[activeLanguage].limited;
-    if (error?.status === 503 || error?.message === "CHAT_NOT_CONFIGURED") return copy[activeLanguage].failed;
+    if (error?.message === "CHAT_NOT_CONFIGURED") return copy[activeLanguage].failed;
+    if (error?.message === "PROVIDER_AUTH_FAILED") return activeLanguage === "id" ? "OpenRouter menolak API Key. Periksa OPENROUTER_API_KEY di Vercel." : "OpenRouter rejected the API key. Check OPENROUTER_API_KEY in Vercel.";
+    if (error?.message === "PROVIDER_CREDITS_REQUIRED") return activeLanguage === "id" ? "Saldo atau kredit OpenRouter tidak mencukupi untuk permintaan ini." : "Your OpenRouter credits are insufficient for this request.";
+    if (error?.message === "PROVIDER_DEFAULT_MODEL_MISSING") return activeLanguage === "id" ? "Model default belum diatur atau tidak tersedia di akun OpenRouter." : "The OpenRouter default model is not configured or unavailable.";
+    if (error?.message === "PROVIDER_ACCESS_DENIED") return activeLanguage === "id" ? "OpenRouter menolak akses untuk API Key atau pengaturan akun ini." : "OpenRouter denied access for this API key or account configuration.";
+    if (error?.message === "PROVIDER_RATE_LIMITED" || error?.status === 429) return copy[activeLanguage].limited;
     if (error?.message === "MESSAGE_TOO_LONG") return copy[activeLanguage].tooLong;
     return copy[activeLanguage].unavailable;
   }

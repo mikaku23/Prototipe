@@ -93,6 +93,40 @@ function sanitizeHistory(history) {
   });
 }
 
+function redactProviderText(value, apiKey) {
+  let text = String(value || "");
+  if (apiKey) text = text.split(apiKey).join("[redacted]");
+  return text
+    .replace(/sk-or-v1-[A-Za-z0-9_-]{20,}/gi, "[redacted credential]")
+    .replace(/Bearer\s+[^\s"']+/gi, "Bearer [redacted]")
+    .replace(/[\r\n\t]+/g, " ")
+    .slice(0, 500);
+}
+
+function providerFailure(upstreamStatus, providerPayload, apiKey) {
+  const providerError = providerPayload?.error;
+  const rawMessage = typeof providerError === "string"
+    ? providerError
+    : providerError?.message || providerPayload?.message || "No provider message returned";
+  const providerCode = providerError?.code || providerPayload?.code || null;
+  const safeMessage = redactProviderText(rawMessage, apiKey);
+  console.error("[MHM_OPENROUTER_ERROR]", JSON.stringify({
+    status: upstreamStatus,
+    code: providerCode ? String(providerCode).slice(0, 80) : null,
+    message: safeMessage
+  }));
+
+  if (upstreamStatus === 401) return { status: 502, error: "PROVIDER_AUTH_FAILED" };
+  if (upstreamStatus === 402) return { status: 502, error: "PROVIDER_CREDITS_REQUIRED" };
+  if (upstreamStatus === 404 || /no\s+(available\s+)?(model|endpoints)|default.*model|model.*(not found|unavailable|invalid|not configured)/i.test(safeMessage)) {
+    return { status: 502, error: "PROVIDER_DEFAULT_MODEL_MISSING" };
+  }
+  if (upstreamStatus === 403) return { status: 502, error: "PROVIDER_ACCESS_DENIED" };
+  if (upstreamStatus === 429) return { status: 429, error: "PROVIDER_RATE_LIMITED" };
+  if (upstreamStatus >= 500) return { status: 503, error: "PROVIDER_UNAVAILABLE" };
+  return { status: 502, error: "AI_PROVIDER_ERROR" };
+}
+
 function safeModelText(content) {
   if (typeof content === "string") return content.trim();
   if (Array.isArray(content)) {
@@ -112,7 +146,7 @@ module.exports = async function handler(req, res) {
   if (contentLength > MAX_BODY_BYTES) return send(res, 413, { error: "REQUEST_TOO_LARGE" });
   if (!checkRateLimit(req)) return send(res, 429, { error: "RATE_LIMITED" });
 
-  const apiKey = process.env.OPENROUTER_API_KEY;
+  const apiKey = String(process.env.OPENROUTER_API_KEY || "").trim();
   if (!apiKey) return send(res, 503, { error: "CHAT_NOT_CONFIGURED" });
 
   let body;
@@ -131,7 +165,6 @@ module.exports = async function handler(req, res) {
   if (message.length > MAX_MESSAGE_CHARS) return send(res, 413, { error: "MESSAGE_TOO_LONG" });
 
   const history = sanitizeHistory(body.history);
-  const model = process.env.OPENROUTER_MODEL || "deepseek/deepseek-chat:free";
   const abortController = new AbortController();
   const timeout = setTimeout(() => abortController.abort(), UPSTREAM_TIMEOUT_MS);
 
@@ -145,7 +178,6 @@ module.exports = async function handler(req, res) {
         "X-Title": "MHM Portfolio AI"
       },
       body: JSON.stringify({
-        model,
         messages: [
           { role: "system", content: SYSTEM_PROMPT },
           ...history,
@@ -160,8 +192,13 @@ module.exports = async function handler(req, res) {
     });
 
     if (!upstream.ok) {
-      const status = upstream.status === 429 ? 429 : upstream.status >= 500 ? 503 : 502;
-      return send(res, status, { error: status === 429 ? "PROVIDER_RATE_LIMITED" : "AI_PROVIDER_ERROR" });
+      let providerPayload = null;
+      let providerText = "";
+      try { providerText = await upstream.text(); } catch { /* No readable upstream body. */ }
+      try { providerPayload = providerText ? JSON.parse(providerText) : null; }
+      catch { providerPayload = { message: providerText || "OpenRouter returned an empty error response" }; }
+      const failure = providerFailure(upstream.status, providerPayload, apiKey);
+      return send(res, failure.status, { error: failure.error });
     }
 
     const data = await upstream.json();
@@ -170,9 +207,13 @@ module.exports = async function handler(req, res) {
 
     // A final guard against accidental credential-shaped text in generated output.
     reply = reply.replace(/sk-or-v1-[A-Za-z0-9_-]{20,}/g, "[redacted credential]").slice(0, 7000);
-    return send(res, 200, { reply, model: data?.model || model });
+    return send(res, 200, { reply });
   } catch (error) {
     if (error?.name === "AbortError") return send(res, 504, { error: "AI_TIMEOUT" });
+    console.error("[MHM_OPENROUTER_CONNECTION_ERROR]", JSON.stringify({
+      name: String(error?.name || "Error").slice(0, 60),
+      message: redactProviderText(error?.message || "Upstream connection failed", apiKey)
+    }));
     return send(res, 502, { error: "AI_CONNECTION_FAILED" });
   } finally {
     clearTimeout(timeout);

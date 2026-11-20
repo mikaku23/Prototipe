@@ -183,7 +183,7 @@
     const collab = project.collaboration ? `<span class="project-collaboration"><i class="ri-git-branch-line" aria-hidden="true"></i>${escapeHTML(project.collaboration)}</span>` : "";
     const placeholder = project.placeholder;
     const action = github
-      ? `<a class="project-github" href="${escapeHTML(github)}" target="_blank" rel="noopener noreferrer"><i class="ri-github-line" aria-hidden="true"></i> GitHub <i class="ri-arrow-up-right-line" aria-hidden="true"></i></a>`
+      ? `<a class="button button-glass project-github" href="${escapeHTML(github)}" target="_blank" rel="noopener noreferrer"><i class="ri-github-line" aria-hidden="true"></i><span>GitHub</span><i class="ri-arrow-up-right-line" aria-hidden="true"></i></a>`
       : `<span class="project-add"><i class="ri-add-circle-line" aria-hidden="true"></i>${escapeHTML(placeholder ? text("projects.add") : text("projects.githubAdd"))}</span>`;
     return `
       <article class="project-card ${compact ? "project-card-compact" : ""} reveal" data-project-id="${escapeHTML(project.id)}" style="--reveal-delay:${Math.min(index % 4, 3) * 65}ms">
@@ -208,7 +208,7 @@
     if (!projectGrid) return;
     const all = sortedProjects();
     const featured = all.filter((project) => project.featured);
-    projectGrid.innerHTML = featured.map((project, index) => createProjectCard(project, index, true)).join("");
+    projectGrid.innerHTML = featured.map((project, index) => createProjectCard(project, index, false)).join("");
     observeReveals(projectGrid);
     if (modalPanel?.classList.contains("is-open")) renderProjectArchive();
   }
@@ -305,30 +305,56 @@
     elements.forEach((element) => observer.observe(element));
   }
 
-  function clamp(number, min, max) { return Math.min(max, Math.max(min, number)); }
+  function measureUntransformedRect(panel) {
+    const properties = ["transition", "transform", "clip-path", "filter", "opacity"];
+    const previous = new Map(properties.map((property) => [property, panel.style.getPropertyValue(property)]));
+    panel.style.setProperty("transition", "none", "important");
+    panel.style.setProperty("transform", "none", "important");
+    panel.style.setProperty("clip-path", "inset(0 round 0px)", "important");
+    panel.style.setProperty("filter", "none", "important");
+    panel.style.setProperty("opacity", "1", "important");
+    void panel.offsetWidth;
+    const rect = panel.getBoundingClientRect();
+    properties.forEach((property) => {
+      const value = previous.get(property);
+      if (value) panel.style.setProperty(property, value);
+      else panel.style.removeProperty(property);
+    });
+    void panel.offsetWidth;
+    return rect;
+  }
+
+  const genieTriggers = new WeakMap();
+  function calculateGenieOrigin(panel, trigger) {
+    const panelRect = measureUntransformedRect(panel);
+    const triggerRect = trigger?.isConnected ? trigger.getBoundingClientRect() : null;
+    const centerX = triggerRect ? triggerRect.left + triggerRect.width / 2 : panelRect.left + panelRect.width / 2;
+    const centerY = triggerRect ? triggerRect.top + triggerRect.height / 2 : panelRect.top + panelRect.height / 2;
+    const originX = centerX - panelRect.left;
+    const originY = centerY - panelRect.top;
+    panel.style.setProperty("--genie-origin-x", `${originX}px`);
+    panel.style.setProperty("--genie-origin-y", `${originY}px`);
+  }
+
   function openGenie(panel, originElement) {
     if (!panel) return;
     const pendingClose = closeTimers.get(panel);
     if (pendingClose) window.clearTimeout(pendingClose);
     closeTimers.delete(panel);
-    panel.classList.remove("is-closing");
+    const trigger = originElement || document.activeElement;
+    genieTriggers.set(panel, trigger);
+    panel.classList.remove("is-closing", "is-open");
     panel.classList.add("is-visible");
     panel.setAttribute("aria-hidden", "false");
-    const panelRect = panel.getBoundingClientRect();
-    const originRect = originElement?.getBoundingClientRect();
-    let x = panelRect.width * .5;
-    let y = panelRect.height * .5;
-    if (originRect) {
-      x = clamp(originRect.left + originRect.width / 2 - panelRect.left, 0, panelRect.width);
-      y = clamp(originRect.top + originRect.height / 2 - panelRect.top, 0, panelRect.height);
-    }
-    panel.style.setProperty("--genie-origin-x", `${panelRect.width ? (x / panelRect.width) * 100 : 50}%`);
-    panel.style.setProperty("--genie-origin-y", `${panelRect.height ? (y / panelRect.height) * 100 : 50}%`);
+    calculateGenieOrigin(panel, trigger);
     void panel.offsetWidth;
     requestAnimationFrame(() => panel.classList.add("is-open"));
   }
+
   function closeGenie(panel, onClosed) {
     if (!panel || !panel.classList.contains("is-visible")) { onClosed?.(); return; }
+    const trigger = genieTriggers.get(panel);
+    calculateGenieOrigin(panel, trigger);
     panel.classList.remove("is-open");
     panel.classList.add("is-closing");
     panel.setAttribute("aria-hidden", "true");
@@ -339,6 +365,7 @@
       panel.style.removeProperty("--genie-origin-x");
       panel.style.removeProperty("--genie-origin-y");
       closeTimers.delete(panel);
+      genieTriggers.delete(panel);
       onClosed?.();
     }, reduceMotion ? 20 : 365);
     closeTimers.set(panel, timer);
@@ -349,6 +376,7 @@
     if (!modalLayer || !modalPanel) return;
     modalReturnFocus = trigger || document.activeElement;
     renderProjectArchive();
+    modalLayer.classList.remove("is-closing");
     modalLayer.classList.add("is-visible");
     document.body.classList.add("modal-open");
     openGenie(modalPanel, trigger);
@@ -356,10 +384,11 @@
   }
   function closeProjectModal() {
     if (!modalLayer || !modalPanel) return;
+    modalLayer.classList.add("is-closing");
     closeGenie(modalPanel, () => {
-      modalLayer.classList.remove("is-visible");
+      modalLayer.classList.remove("is-visible", "is-closing");
       document.body.classList.remove("modal-open");
-      modalReturnFocus?.focus?.();
+      modalReturnFocus?.focus?.({ preventScroll: true });
       modalReturnFocus = null;
     });
   }
@@ -372,6 +401,8 @@
     const icon = $("i", menuButton);
     if (icon) icon.className = open ? "ri-close-line" : "ri-menu-3-line";
   }
+
+  function clamp(number, min, max) { return Math.min(max, Math.max(min, number)); }
 
   function updateTimelineProgress() {
     const timeline = $("#career-timeline");
