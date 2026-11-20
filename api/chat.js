@@ -8,8 +8,9 @@ const MAX_HISTORY_ITEMS = 10;
 const RATE_WINDOW_MS = 60 * 1000;
 const RATE_MAX_REQUESTS = 10;
 const UPSTREAM_TIMEOUT_MS = 22000;
-// OpenRouter selects an available free model dynamically for each request.
-const OPENROUTER_MODEL = "openrouter/free";
+// Match the Laravel OpenRouterService default; override through server-side env when needed.
+const DEFAULT_OPENROUTER_MODEL = "deepseek/deepseek-chat";
+const OPENROUTER_MODEL = String(process.env.OPENROUTER_MODEL || DEFAULT_OPENROUTER_MODEL).trim() || DEFAULT_OPENROUTER_MODEL;
 
 const SYSTEM_PROMPT = `You are MHM AI, the public portfolio assistant for Muhammad Haliq Maulana.
 
@@ -186,9 +187,9 @@ module.exports = async function handler(req, res) {
           ...history,
           { role: "user", content: message }
         ],
-        temperature: 0.45,
+        temperature: 0.2,
         top_p: 0.9,
-        max_tokens: 800,
+        max_tokens: 700,
         stream: false
       }),
       signal: abortController.signal
